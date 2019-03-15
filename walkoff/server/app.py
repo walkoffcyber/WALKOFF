@@ -22,9 +22,9 @@ logger = logging.getLogger(__name__)
 def register_blueprints(flaskapp, separate_interfaces=False):
     flaskapp.logger.info('Registering builtin blueprints')
     flaskapp.register_blueprint(custominterface.custom_interface_page, url_prefix='/custominterfaces/<interface>')
-    flaskapp.register_blueprint(workflowresults.workflowresults_page, url_prefix='/api/streams/workflowqueue')
-    flaskapp.register_blueprint(notifications.notifications_page, url_prefix='/api/streams/messages')
-    flaskapp.register_blueprint(console.console_page, url_prefix='/api/streams/console')
+    flaskapp.register_blueprint(workflowresults.workflowresults_page, url_prefix='/walkoffapi/streams/workflowqueue')
+    flaskapp.register_blueprint(notifications.notifications_page, url_prefix='/walkoffapi/streams/messages')
+    flaskapp.register_blueprint(console.console_page, url_prefix='/walkoffapi/streams/console')
     flaskapp.register_blueprint(root.root_page, url_prefix='/')
     for blueprint in (workflowresults.workflowresults_page, notifications.notifications_page, console.console_page):
         blueprint.cache = flaskapp.running_context.cache
@@ -79,7 +79,7 @@ def register_swagger_blueprint(flaskapp):
     swaggerui_blueprint = get_swaggerui_blueprint(walkoff.config.Config.SWAGGER_URL, swagger_yaml,
                                                   config={'spec': swagger_yaml})
     flaskapp.register_blueprint(swaggerui_blueprint, url_prefix=walkoff.config.Config.SWAGGER_URL)
-    flaskapp.logger.info("Registered blueprint for swagger API docs at url prefix /api/docs")
+    flaskapp.logger.info("Registered blueprint for swagger API docs at url prefix /walkoffapi//docs")
 
 
 def add_health_check(_app):

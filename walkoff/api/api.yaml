@@ -49,7 +49,7 @@ tags:
     description: System Resources
 
 servers:
-  - url: /api
+  - url: /walkoffapi
 
 paths:
   $ref: ./apps.yaml
@@ -90,9 +90,9 @@ components:
       bearerFormat: JWT
       x-bearerInfoFunc: walkoff.security.decode_token
       description: >
-        We use a JWT authorization workflow. Use the /api/auth endpoint to get JWT access and refresh tokens. Then use the
+        We use a JWT authorization workflow. Use the /walkoffapi/auth endpoint to get JWT access and refresh tokens. Then use the
         access token in the header "Authorization: Bearer accesstoken.goes.here".  That token will expire in 15 minutes by
-        default. When it expires, you'll receive a 401 response code. At that point, use the /api/auth/refresh
+        default. When it expires, you'll receive a 401 response code. At that point, use the /walkoffapi/auth/refresh
         with the header "Authorization: Bearer refreshtoken.goes.here" to receive a fresh access token. When you're done,
-        please use the /api/auth/logout endpoint to log out.  See the implementation in the Walkoff App for an example
+        please use the /walkoffapi/auth/logout endpoint to log out.  See the implementation in the Walkoff App for an example
         implementation.

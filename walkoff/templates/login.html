@@ -95,7 +95,7 @@
             var username = $("#username").val();
             var password = $("#password").val();
             $.ajax({
-                url: '/api/auth',
+                url: '/walkoffapi/auth',
                 contentType: 'application/json',
                 data: JSON.stringify({ "username": username, "password": password }),
                 type: "POST",

@@ -20,7 +20,7 @@ app_apis = {}
 
 def load_app_apis(apps_path=None):
     """Loads App APIs
-    
+
     Args:
         apps_path (str, optional): Optional path to specify for the apps. Defaults to None, but will be set to the
             apps_path variable in Config object
@@ -174,7 +174,7 @@ class Config(object):
 
     ALEMBIC_CONFIG = join('.', 'alembic.ini')
 
-    SWAGGER_URL = '/api/docs'
+    SWAGGER_URL = '/walkoffapi//docs'
 
     @classmethod
     def load_config(cls, config_path=None):

@@ -23,7 +23,7 @@ export class DevicesService {
 	 * Asynchronously returns an array of existing devices from the server.
 	 */
 	getDevices(page: number = 1): Promise<Device[]> {
-		return this.http.get(`/api/devices?page=${ page }`)
+		return this.http.get(`/walkoffapi/devices?page=${ page }`)
 			.toPromise()
 			.then((data) => plainToClass(Device, data))
 			.catch(this.utils.handleResponseError);
@@ -34,7 +34,7 @@ export class DevicesService {
 	 * @param device Device to add
 	 */
 	addDevice(device: Device): Promise<Device> {
-		return this.http.post('/api/devices', device)
+		return this.http.post('/walkoffapi/devices', device)
 			.toPromise()
 			.then((data) => plainToClass(Device, data))
 			.catch(this.utils.handleResponseError);
@@ -45,7 +45,7 @@ export class DevicesService {
 	 * @param device Device to edit
 	 */
 	editDevice(device: Device): Promise<Device> {
-		return this.http.patch('/api/devices', device)
+		return this.http.patch('/walkoffapi/devices', device)
 			.toPromise()
 			.then((data) => plainToClass(Device, data))
 			.catch(this.utils.handleResponseError);
@@ -56,7 +56,7 @@ export class DevicesService {
 	 * @param deviceId Device ID to delete
 	 */
 	deleteDevice(deviceId: number): Promise<void> {
-		return this.http.delete(`/api/devices/${deviceId}`)
+		return this.http.delete(`/walkoffapi/devices/${deviceId}`)
 			.toPromise()
 			.then(() => null)
 			.catch(this.utils.handleResponseError);
@@ -67,7 +67,7 @@ export class DevicesService {
 	 * AppApi objects are scoped to only contain device apis.
 	 */
 	getDeviceApis(): Promise<AppApi[]> {
-		return this.http.get('api/apps/apis?field_name=device_apis')
+		return this.http.get('walkoffapi/apps/apis?field_name=device_apis')
 			.toPromise()
 			.then((data) => plainToClass(AppApi, data as Object[]))
 			// Clear out any apps without device apis

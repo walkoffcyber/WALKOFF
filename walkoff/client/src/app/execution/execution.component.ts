@@ -98,7 +98,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 
 		this.recalculateTableCallback = (e: any) => {
 			if (this.actionStatusTable && this.actionStatusTable.recalculate) {
-				if (Array.isArray(this.actionStatusTable.rows)) 
+				if (Array.isArray(this.actionStatusTable.rows))
 					this.actionStatusTable.rows = [...this.actionStatusTable.rows];
 				this.actionStatusTable.recalculate();
 			}
@@ -112,7 +112,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	 */
 	ngAfterViewChecked(): void {
 		// Check if the table size has changed, and recalculate.
-		if (this.actionStatusTable && this.actionStatusTable.recalculate && 
+		if (this.actionStatusTable && this.actionStatusTable.recalculate &&
 			(this.actionStatusContainer.nativeElement.clientWidth !== this.actionStatusComponentWidth)) {
 			this.actionStatusComponentWidth = this.actionStatusContainer.nativeElement.clientWidth;
 			this.actionStatusTable.recalculate();
@@ -172,7 +172,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	 * Initiates an EventSource for workflow statuses from the server. Binds various events to the event handler.
 	 */
 	getWorkflowStatusSSE(): void {
-		this.authService.getEventSource('/api/streams/workflowqueue/workflow_status')
+		this.authService.getEventSource('/walkoffapi/streams/workflowqueue/workflow_status')
 			.then(eventSource => {
 				this.workflowStatusEventSource = eventSource;
 				this.workflowStatusEventSource.addEventListener('queued', (e: any) => this.workflowStatusEventHandler(e));
@@ -187,7 +187,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	}
 
 	/**
-	 * Handles an EventSource message for Workflow Status. 
+	 * Handles an EventSource message for Workflow Status.
 	 * Updates existing workflow statuses for status updates or adds new ones to the list for display.
 	 * @param message EventSource message for workflow status
 	 */
@@ -255,7 +255,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	getActionStatusSSE(workflowExecutionId: string = null): void {
 		if (this.actionStatusEventSource) this.actionStatusEventSource.close();
 
-		let url = `/api/streams/workflowqueue/actions?summary=true`;
+		let url = `/walkoffapi/streams/workflowqueue/actions?summary=true`;
 		if (workflowExecutionId) url += `&workflow_execution_id=${ workflowExecutionId }`;
 
 		this.authService.getEventSource(url)
@@ -269,7 +269,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	}
 
 	/**
-	 * Handles an EventSource message for Action Status. 
+	 * Handles an EventSource message for Action Status.
 	 * Updates the parent workflow status' current_action if applicable.
 	 * Will add/update action statuses for display if the parent workflow execution is 'loaded' in the modal.
 	 * @param message EventSource message for action status
@@ -427,7 +427,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 					});
 					this.loadedWorkflowStatus = fullWorkflowStatus;
 					this.recalculateRelativeTimes();
-					
+
 				})
 				.catch(e => {
 					this.toastrService.error(`Error loading action results for "${workflowStatus.name}": ${e.message}`)
@@ -501,7 +501,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	appNameComparator(propA: CurrentAction, propB: CurrentAction) {
 		if (!propA) { return 1; }
 		if (!propB) { return -1; }
-		
+
 		if (propA.app_name.toLowerCase() < propB.app_name.toLowerCase()) { return -1; }
 		if (propA.app_name.toLowerCase() > propB.app_name.toLowerCase()) { return 1; }
 	}
@@ -514,7 +514,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	actionNameComparator(propA: CurrentAction, propB: CurrentAction) {
 		if (!propA) { return 1; }
 		if (!propB) { return -1; }
-		
+
 		if (propA.action_name.toLowerCase() < propB.action_name.toLowerCase()) { return -1; }
 		if (propA.action_name.toLowerCase() > propB.action_name.toLowerCase()) { return 1; }
 	}
@@ -527,25 +527,25 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 
 		this.workflowStatuses.forEach(workflowStatus => {
 			if (workflowStatus.started_at) {
-				this.workflowStatusStartedRelativeTimes[workflowStatus.execution_id] = 
+				this.workflowStatusStartedRelativeTimes[workflowStatus.execution_id] =
 					this.utils.getRelativeLocalTime(workflowStatus.started_at);
 			}
 			if (workflowStatus.completed_at) {
-				this.workflowStatusCompletedRelativeTimes[workflowStatus.execution_id] = 
+				this.workflowStatusCompletedRelativeTimes[workflowStatus.execution_id] =
 					this.utils.getRelativeLocalTime(workflowStatus.completed_at);
 			}
 		});
 
-		if (!this.loadedWorkflowStatus || !this.loadedWorkflowStatus.action_statuses || 
+		if (!this.loadedWorkflowStatus || !this.loadedWorkflowStatus.action_statuses ||
 			!this.loadedWorkflowStatus.action_statuses.length ) { return; }
 
 		this.loadedWorkflowStatus.action_statuses.forEach(actionStatus => {
 			if (actionStatus.started_at) {
-				this.actionStatusStartedRelativeTimes[actionStatus.execution_id] = 
+				this.actionStatusStartedRelativeTimes[actionStatus.execution_id] =
 					this.utils.getRelativeLocalTime(actionStatus.started_at);
 			}
 			if (actionStatus.completed_at) {
-				this.actionStatusCompletedRelativeTimes[actionStatus.execution_id] = 
+				this.actionStatusCompletedRelativeTimes[actionStatus.execution_id] =
 					this.utils.getRelativeLocalTime(actionStatus.completed_at);
 			}
 		});
@@ -556,10 +556,10 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	 * @param status Workflow or Action Status to mutate
 	 */
 	calculateLocalizedTimes(status: WorkflowStatus | ActionStatus): void {
-		if (status.started_at) { 
+		if (status.started_at) {
 			status.localized_started_at = this.utils.getLocalTime(status.started_at);
 		}
-		if (status.completed_at) { 
+		if (status.completed_at) {
 			status.localized_completed_at = this.utils.getLocalTime(status.completed_at);
 		}
 	}

@@ -24,7 +24,7 @@ export class ExecutionService {
 		let data: any = { workflow_id };
 		if (variables.length > 0) data.environment_variables = classToPlain(variables);
 
-		return this.http.post('api/workflowqueue', data)
+		return this.http.post('walkoffapi/workflowqueue', data)
 			.toPromise()
 			.then((data: object) => plainToClass(WorkflowStatus, data))
 			.catch(this.utils.handleResponseError);
@@ -37,7 +37,7 @@ export class ExecutionService {
 	 * @param action Action to take (e.g. abort, resume, pause)
 	 */
 	performWorkflowStatusAction(workflowId: string, action: string): Promise<void> {
-		return this.http.patch('api/workflowqueue', { execution_id: workflowId, status: action })
+		return this.http.patch('walkoffapi/workflowqueue', { execution_id: workflowId, status: action })
 			.toPromise()
 			.then(() => null)
 			.catch(this.utils.handleResponseError);
@@ -54,7 +54,7 @@ export class ExecutionService {
 	 * Asyncronously gets an array of workflow statuses from the server.
 	 */
 	getWorkflowStatuses(page: number = 1): Promise<WorkflowStatus[]> {
-		return this.http.get(`api/workflowqueue?page=${ page }`)
+		return this.http.get(`walkoffapi/workflowqueue?page=${ page }`)
 			.toPromise()
 			.then((data: object[]) => plainToClass(WorkflowStatus, data))
 			.catch(this.utils.handleResponseError);
@@ -65,7 +65,7 @@ export class ExecutionService {
 	 * @param workflowExecutionId Workflow Status to query
 	 */
 	getWorkflowStatus(workflowExecutionId: string): Promise<WorkflowStatus> {
-		return this.http.get(`api/workflowqueue/${workflowExecutionId}`)
+		return this.http.get(`walkoffapi/workflowqueue/${workflowExecutionId}`)
 			.toPromise()
 			.then((data: object) => plainToClass(WorkflowStatus, data))
 			.catch(this.utils.handleResponseError);
@@ -75,7 +75,7 @@ export class ExecutionService {
 	 * Asyncryonously gets arrays of all playbooks and workflows (id, name pairs only).
 	 */
 	getPlaybooks(): Promise<Playbook[]> {
-		return this.http.get('/api/playbooks')
+		return this.http.get('/walkoffapi/playbooks')
 			.toPromise()
 			.then((data: object[]) => plainToClass(Playbook, data))
 			.catch(this.utils.handleResponseError);
@@ -86,7 +86,7 @@ export class ExecutionService {
 	 * @param workflowId ID of the workflow to load
 	 */
 	loadWorkflow(workflowId: string): Promise<Workflow> {
-		return this.http.get(`/api/workflows/${workflowId}`)
+		return this.http.get(`/walkoffapi/workflows/${workflowId}`)
 			.toPromise()
 			.then((data: object) => plainToClass(Workflow, data))
 			.catch(this.utils.handleResponseError);
