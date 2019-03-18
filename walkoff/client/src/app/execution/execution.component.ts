@@ -376,7 +376,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	 * Executes a given workflow. Uses the selected workflow (specified via the select2 box).
 	 */
 	executeSelectedWorkflow(environmentVariables: EnvironmentVariable[] = []): void {
-		this.executionService.addWorkflowToQueue(this.selectedWorkflow.id, environmentVariables)
+		this.executionService.addWorkflowToQueue(this.selectedWorkflow.id, null, environmentVariables)
 			.then((workflowStatus: WorkflowStatus) => {
 				this.toastrService.success(`Successfully started execution of "${this.selectedWorkflow.name}"`);
 			})

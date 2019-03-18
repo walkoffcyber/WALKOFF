@@ -204,10 +204,10 @@ export class PlaybookComponent implements OnInit, AfterViewChecked, OnDestroy {
 	 * Sets up the EventStream for receiving console logs from the server. Binds various events to the event handler.
 	 * Will currently return ALL stream actions and not just the ones manually executed.
 	 */
-	getConsoleSSE(workflowExecutionId: string): void {
+	getConsoleSSE(workflowExecutionId: string) {
 		if (this.consoleEventSource) this.consoleEventSource.close();
 
-		this.authService.getEventSource(`/walkoffapi/streams/console/log?workflow_execution_id=${ workflowExecutionId }`)
+		return this.authService.getEventSource(`/walkoffapi/streams/console/log?workflow_execution_id=${ workflowExecutionId }`)
 			.then(eventSource => {
 				this.consoleEventSource = eventSource
                 this.consoleEventSource.addEventListener('log', (e: any) => this.consoleEventHandler(e));
@@ -241,10 +241,10 @@ export class PlaybookComponent implements OnInit, AfterViewChecked, OnDestroy {
 	 * Sets up the EventStream for receiving stream actions from the server. Binds various events to the event handler.
 	 * Will currently return ALL stream actions and not just the ones manually executed.
 	 */
-	getActionStatusSSE(workflowExecutionId: string): void {
+	getActionStatusSSE(workflowExecutionId: string) {
 		if (this.eventSource) this.eventSource.close();
 
-		this.authService.getEventSource(`/walkoffapi/streams/workflowqueue/actions?workflow_execution_id=${ workflowExecutionId }`)
+		return this.authService.getEventSource(`/walkoffapi/streams/workflowqueue/actions?workflow_execution_id=${ workflowExecutionId }`)
 			.then(eventSource => {
 				this.eventSource = eventSource
 				this.eventSource.addEventListener('started', (e: any) => this.actionStatusEventHandler(e));
@@ -337,14 +337,18 @@ export class PlaybookComponent implements OnInit, AfterViewChecked, OnDestroy {
 	executeWorkflow(): void {
 		if (!this.loadedWorkflow) { return; }
 		this.clearExecutionHighlighting();
-		this.playbookService.addWorkflowToQueue(this.loadedWorkflow.id)
-			.then((workflowStatus: WorkflowStatus) => {
-				this.getActionStatusSSE(workflowStatus.id)
-				this.getConsoleSSE(workflowStatus.id)
-				this.toastrService.success(`Starting execution of ${this.loadedPlaybook.name} - ${this.loadedWorkflow.name}.`)
-			})
-			.catch(e => this.toastrService
-				.error(`Error starting execution of ${this.loadedPlaybook.name} - ${this.loadedWorkflow.name}: ${e.message}`));
+
+		const executionId = UUID.UUID();
+		Promise.all([
+			this.getActionStatusSSE(executionId),
+			this.getConsoleSSE(executionId)
+		]).then(() => {
+			this.playbookService.addWorkflowToQueue(this.loadedWorkflow.id, executionId)
+				.then((workflowStatus: WorkflowStatus) => {
+					this.toastrService.success(`Starting execution of ${this.loadedPlaybook.name} - ${this.loadedWorkflow.name}.`)
+				})
+				.catch(e => this.toastrService.error(`Error starting execution of ${this.loadedPlaybook.name} - ${this.loadedWorkflow.name}: ${e.message}`));
+		})
 	}
 
 	/**

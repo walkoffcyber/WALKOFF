@@ -172,8 +172,8 @@ export class PlaybookService {
 	 * Note that execution results are not returned here, but on a separate stream-actions EventSource.
 	 * @param workflowId ID of the workflow to execute
 	 */
-	addWorkflowToQueue(workflowId: string): Promise<WorkflowStatus> {
-		return this.executionService.addWorkflowToQueue(workflowId);
+	addWorkflowToQueue(workflowId: string, executionId: string = null): Promise<WorkflowStatus> {
+		return this.executionService.addWorkflowToQueue(workflowId, executionId);
 	}
 
 	/**
