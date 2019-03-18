@@ -78,6 +78,7 @@ def get_workflow_status(execution_id):
 def execute_workflow():
     data = request.get_json()
     workflow_id = data['workflow_id']
+    execution_id_in = data.get('execution_id')
 
     @jwt_required
     @permissions_accepted_for_resources(ResourcePermissions('playbooks', ['execute']))
@@ -107,8 +108,8 @@ def execute_workflow():
                     'Cannot execute workflow.',
                     'Some arguments are invalid. Reason: {}'.format(errors))
 
-        execution_id = current_app.running_context.executor.execute_workflow(workflow_id, start=start,
-                                                                             start_arguments=arguments,
+        execution_id = current_app.running_context.executor.execute_workflow(workflow_id, execution_id_in=execution_id_in,
+                                                                             start=start,start_arguments=arguments,
                                                                              environment_variables=env_var_objs,
                                                                              user=get_jwt_claims().get('username',
                                                                                                        None))

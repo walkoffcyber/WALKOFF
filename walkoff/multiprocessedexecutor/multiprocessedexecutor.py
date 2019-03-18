@@ -158,7 +158,7 @@ class MultiprocessedExecutor(object):
         """
         workflow = self.execution_db.session.query(Workflow).filter_by(id=workflow_id).first()
         if not workflow:
-            logger.error('Attempted to execute workflow {} which does not exist'.format(execution_id_in))
+            logger.error('Attempted to execute workflow {} which does not exist'.format(workflow_id))
             return None, 'Attempted to execute workflow which does not exist'
 
         execution_id = execution_id_in if execution_id_in else str(uuid.uuid4())
