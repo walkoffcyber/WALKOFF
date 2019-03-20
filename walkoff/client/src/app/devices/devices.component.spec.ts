@@ -91,7 +91,7 @@ describe('DevicesComponent', () => {
 				JwtModule.forRoot({
 					config: {
 						tokenGetter: jwtTokenGetter,
-						blacklistedRoutes: ['/login', '/walkoffapi/auth', '/walkoffapi/auth/logout', '/walkoffapi/auth/refresh']
+						blacklistedRoutes: ['/login', '/api/auth', '/api/auth/logout', '/api/auth/refresh']
 					}
 				}),
 				ToastrModule.forRoot({ positionClass: 'toast-bottom-right' })

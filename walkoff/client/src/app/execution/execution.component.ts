@@ -172,7 +172,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	 * Initiates an EventSource for workflow statuses from the server. Binds various events to the event handler.
 	 */
 	getWorkflowStatusSSE(): void {
-		this.authService.getEventSource('/walkoffapi/streams/workflowqueue/workflow_status')
+		this.authService.getEventSource('/walkoff/api/streams/workflowqueue/workflow_status')
 			.then(eventSource => {
 				this.workflowStatusEventSource = eventSource;
 				this.workflowStatusEventSource.addEventListener('queued', (e: any) => this.workflowStatusEventHandler(e));
@@ -255,7 +255,7 @@ export class ExecutionComponent implements OnInit, AfterViewChecked, OnDestroy {
 	getActionStatusSSE(workflowExecutionId: string = null): void {
 		if (this.actionStatusEventSource) this.actionStatusEventSource.close();
 
-		let url = `/walkoffapi/streams/workflowqueue/actions?summary=true`;
+		let url = `/walkoff/api/streams/workflowqueue/actions?summary=true`;
 		if (workflowExecutionId) url += `&workflow_execution_id=${ workflowExecutionId }`;
 
 		this.authService.getEventSource(url)

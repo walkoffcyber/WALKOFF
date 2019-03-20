@@ -207,7 +207,7 @@ export class PlaybookComponent implements OnInit, AfterViewChecked, OnDestroy {
 	getConsoleSSE(workflowExecutionId: string) {
 		if (this.consoleEventSource) this.consoleEventSource.close();
 
-		return this.authService.getEventSource(`/walkoffapi/streams/console/log?workflow_execution_id=${ workflowExecutionId }`)
+		return this.authService.getEventSource(`/walkoff/api/streams/console/log?workflow_execution_id=${ workflowExecutionId }`)
 			.then(eventSource => {
 				this.consoleEventSource = eventSource
                 this.consoleEventSource.addEventListener('log', (e: any) => this.consoleEventHandler(e));
@@ -244,7 +244,7 @@ export class PlaybookComponent implements OnInit, AfterViewChecked, OnDestroy {
 	getActionStatusSSE(workflowExecutionId: string) {
 		if (this.eventSource) this.eventSource.close();
 
-		return this.authService.getEventSource(`/walkoffapi/streams/workflowqueue/actions?workflow_execution_id=${ workflowExecutionId }`)
+		return this.authService.getEventSource(`/walkoff/api/streams/workflowqueue/actions?workflow_execution_id=${ workflowExecutionId }`)
 			.then(eventSource => {
 				this.eventSource = eventSource
 				this.eventSource.addEventListener('started', (e: any) => this.actionStatusEventHandler(e));

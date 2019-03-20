@@ -19,6 +19,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod",
+    "build:forge": "ng build --prod --baseHref=/walkoff/",
     "watch": "ng build --watch",
     "test": "ng test",
     "lint": "ng lint",

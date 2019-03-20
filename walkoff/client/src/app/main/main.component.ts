@@ -92,7 +92,7 @@ export class MainComponent implements OnInit, OnDestroy {
 	 * For existing messages, if they were responded to, remove the ! icon.
 	 */
 	getNotificationsSSE(): void {
-		this.authService.getEventSource('/walkoffapi/streams/messages/notifications')
+		this.authService.getEventSource('/walkoff/api/streams/messages/notifications')
 			.then(eventSource => {
 				this.eventSource = eventSource;
 
