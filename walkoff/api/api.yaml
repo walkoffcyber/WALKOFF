@@ -49,7 +49,7 @@ tags:
     description: System Resources
 
 servers:
-  - url: /api
+  - url: /walkoff/api
 
 paths:
   $ref: ./apps.yaml
