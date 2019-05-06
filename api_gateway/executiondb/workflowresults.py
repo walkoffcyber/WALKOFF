@@ -66,6 +66,7 @@ class NodeStatusSchema(BaseSchema):
     """
 
     status = EnumField(StatusEnum)
+
     class Meta:
         model = NodeStatus
         unknown = EXCLUDE

@@ -20,6 +20,8 @@ from api_gateway.security import permissions_accepted_for_resources, ResourcePer
 from api_gateway.server.problem import unique_constraint_problem, invalid_id_problem
 from api_gateway.sse import SseEvent
 
+from common.elasticsearch_helpers import connect_to_elasticsearch, flatten_data_for_es
+
 
 logger = logging.getLogger(__name__)
 
@@ -65,10 +67,15 @@ def push_to_action_stream_queue(node_statuses, event):
     for node_status in node_statuses:
         node_status_json = node_status_schema.dump(node_status)
         node_status_json["execution_id"] = str(node_status_json["execution_id"])
+
         sse_event = SseEvent(event, node_status_json)
         execution_id = str(node_status_json["execution_id"])
 
         sse_event_text = sse_event.format(event_id)
+
+        es = connect_to_elasticsearch()
+        body = flatten_data_for_es(node_status_json)
+        es.create(index='walkoff-results-index', id=node_status.combined_id, body=body)
 
         if execution_id in action_stream_subs:
             action_stream_subs[execution_id].put(sse_event_text)
@@ -118,7 +125,7 @@ def update_workflow_status(execution_id):
     # TODO: change these on the db model to be keyed by ID
     if "node_statuses" in old_workflow_status:
         old_workflow_status["node_statuses"] = {astat['node_id']: astat for astat in
-                                                  old_workflow_status["node_statuses"]}
+                                                old_workflow_status["node_statuses"]}
     else:
         old_workflow_status["node_statuses"] = {}
 

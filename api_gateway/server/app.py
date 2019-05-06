@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+import json
 
 import connexion
 from flask import Blueprint
@@ -8,6 +9,9 @@ from flask_swagger_ui import get_swaggerui_blueprint
 from healthcheck import HealthCheck
 from jinja2 import FileSystemLoader
 from yaml import Loader, load
+
+
+from common.elasticsearch_helpers import connect_to_elasticsearch
 
 import api_gateway.config
 from api_gateway.extensions import db, jwt
@@ -82,4 +86,10 @@ register_blueprints(_app)
 register_swagger_blueprint(_app)
 
 add_health_check(_app)
+
+with open('api_gateway/server/es_index.json') as f:
+    es = connect_to_elasticsearch()
+    es.indices.create(index='walkoff-results-index', body=json.load(f), wait_for_active_shards=1)
+    print(f"Was ES index creation successful? {es.indices.exists('walkoff-results-index')}")
+
 app = _app
