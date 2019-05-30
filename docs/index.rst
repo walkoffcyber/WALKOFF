@@ -8,14 +8,15 @@ Welcome to WALKOFF's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Table of Contents:
 
-   workflow
+		interface <interface.rst>
+		workflow <workflow.rst>
+		prepackaged_apps <prepackaged_apps.rst>
+		apps <apps.rst>
+		api <api.rst>
+
 
 
 Indices and tables
 ==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
