@@ -10,11 +10,11 @@ Welcome to WALKOFF's documentation!
    :maxdepth: 2
    :caption: Table of Contents:
 
-		interface <interface.rst>
-		workflow <workflow.rst>
-		prepackaged_apps <prepackaged_apps.rst>
-		apps <apps.rst>
-		api <api.rst>
+		Interface Overview <interface.rst>
+		Workflow Development <workflow.rst>
+		Prepackaged Applications <prepackaged_apps.rst>
+		Application Development <apps.rst>
+		Api Gateway <api.rst>
 
 
 
