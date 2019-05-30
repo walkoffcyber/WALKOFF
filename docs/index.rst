@@ -10,6 +10,7 @@ Welcome to WALKOFF's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   workflow
 
 
 Indices and tables
