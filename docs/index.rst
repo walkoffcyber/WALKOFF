@@ -14,19 +14,19 @@ Deploying WALKOFF
 
 1. Open a terminal on Linux or a command prompt on Windows, and run the command
 
-.. code-block:: bash
+.. code-block:: console
 
 		git clone https://github.com/nsacyber/WALKOFF.git
 
 2. Change directories to the WALKOFF directory
 
-.. code-block:: bash
+.. code-block:: console
 
 		cd WALKOFF
 
 3. To launch WALKOFF, perform the following commands
 
-.. code-block:: bash
+.. code-block:: console
 
 		docker swarm init
 		docker-compose build
@@ -34,7 +34,7 @@ Deploying WALKOFF
 
 4. Navigate to the default IP and port.
 
-.. code-block:: bash
+.. code-block:: console
 		
 		localhost:8080
 
