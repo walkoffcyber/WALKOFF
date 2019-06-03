@@ -24,6 +24,5 @@ There are several key places to look to debug an application.
 	5.  **App Containers**
     * Obtain app_container_name from docker ps.
     * You can docker exec -it app_container_name /bin/sh into your app container while it is running to check things like network connectivity, the filesystem, or to run your app manually inside it. (If it is crashing on startup, you will need to fix that first or override its starting command with a sleep instead)
-    * You can also run the app manually outside of docker entirely:
-
+    * You can also run the app manually outside of docker entirely: .. include:: ../app_sdk/README.md
 
