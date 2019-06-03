@@ -24,25 +24,40 @@ globals
 --------
 .. openapi:: swagger_api.yaml
     :paths:
-        /global
+        /globals
 
 roles
 ------
+.. openapi:: swagger_api.yaml
+    :paths:
+        /roles
 
 scheduler
 -----------
-
-scheduledtasks
-----------------
+.. openapi:: swagger_api.yaml
+    :paths:
+        /scheduler
 
 users
 ------
+.. openapi:: swagger_api.yaml
+    :paths:
+        /users
 
 workflowqueue
 --------------
+.. openapi:: swagger_api.yaml
+    :paths:
+        /workflowqueue
 
 workflows
 ----------
+.. openapi:: swagger_api.yaml
+    :paths:
+        /workflows
 
 dashboards
 -----------
+.. openapi:: swagger_api.yaml
+    :paths:
+        /dashboards

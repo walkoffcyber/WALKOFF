@@ -29,18 +29,10 @@ tags:
     description: Workflow Operations
   - name: WorkflowQueue
     description: Workflow Control Operations
-  - name: Events
-    description: Event Operations
   - name: Scheduler
     description: Scheduler Operations
-  - name: Triggers
-    description: Trigger Operations
-  - name: Client
-    description: Serves up client pages
-  - name: System
-    description: System Resources
-  - name: TempInternal
-    description: TempInternal
+  - name: Dashboards
+    description: Dashboard Operations
 
 
 basePath: /api
@@ -92,7 +84,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/AppApi'
+                  type: object
     post:  # ToDo: Delete this when testing is finished
       tags:
         - Apps
@@ -105,14 +97,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppApi'
+              $ref: '#/definitions/AppApi'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AppApi'
+                $ref: '#/definitions/AppApi'
 
   /apps/apis/{app}:
     get:
@@ -134,13 +126,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AppApi'
+                $ref: '#/definitions/AppApi'
         404:
           description: App does not exist
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
     put:  # ToDo: Delete this when testing is finished
       tags:
@@ -161,26 +153,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppApi'
+              $ref: '#/definitions/AppApi'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AppApi'
+                $ref: '#/definitions/AppApi'
         404:
           description: AppApi does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
         400:
           description: AppApi already exists.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
     delete:  # ToDo: Delete this when testing is finished
       tags:
@@ -203,7 +195,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
   # AUTH
   /auth:
     post:
@@ -218,20 +210,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Authentication'
+              $ref: '#/definitions/Authentication'
       responses:
         201:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Token'
+                $ref: '#/definitions/Token'
         401:
           description: Unauthorized
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
       security: []
 
   /auth/refresh:
@@ -247,13 +239,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Token'
+                $ref: '#/definitions/Token'
         401:
           description: Unauthorized
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   /auth/logout:
     post:
@@ -281,7 +273,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   # CONFIGURATION
   /configuration:
@@ -296,13 +288,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Configuration'
+                $ref: '#/definitions/Configuration'
         401:
           description: Unauthorized access
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     put:
       tags:
         - Configuration
@@ -314,7 +306,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Configuration'
+              $ref: '#/definitions/Configuration'
       responses:
         200:
           description: Success
@@ -323,13 +315,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
         515:
           description: Could not write configuration to file
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     patch:
       tags:
         - Configuration
@@ -341,7 +333,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Configuration'
+              $ref: '#/definitions/Configuration'
       responses:
         200:
           description: Success
@@ -350,13 +342,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
         515:
           description: Could not write configuration to file
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   #DASHBOARDS
   /dashboards:
@@ -382,13 +374,13 @@ paths:
                 type: array
                 description: A list of the full representation of all dashboards
                 items:
-                  $ref: '#/components/schemas/Dashboard'
+                  $ref: '#/definitions/Dashboard'
         404:
           description: No dashboards exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     post:
       tags:
         - Dashboards
@@ -401,20 +393,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Dashboard'
+              $ref: '#/definitions/Dashboard'
       responses:
         201:
           description: Workflow created.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dashboard'
+                $ref: '#/definitions/Dashboard'
         400:
           description: Workflow already exists.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     put:
       tags:
         - Dashboards
@@ -427,7 +419,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Dashboard'
+              $ref: '#/definitions/Dashboard'
       responses:
         200:
           description: Success
@@ -438,13 +430,13 @@ paths:
                 required: [dashboard]
                 properties:
                   dashboard:
-                    $ref: '#/components/schemas/Workflow'
+                    $ref: '#/definitions/Workflow'
         404:
           description: Dashboard does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   /dashboards/{dashboard}:
     get:
@@ -467,13 +459,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dashboard'
+                $ref: '#/definitions/Dashboard'
         404:
           description: No dashboard with that ID exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     delete:
       tags:
         - Dashboards
@@ -494,13 +486,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Dashboard'
+                $ref: '#/definitions/Dashboard'
         404:
           description: Dashboard does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   #GLOBAL_VARIABLES
   /globals/{global_var}:
@@ -530,7 +522,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GlobalVariable'
+                $ref: '#/definitions/GlobalVariable'
         404:
           description: GlobalVariable does not exist.
     put:
@@ -553,20 +545,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GlobalVariable'
+              $ref: '#/definitions/GlobalVariable'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GlobalVariable'
+                $ref: '#/definitions/GlobalVariable'
         404:
           description: GlobalVariable does not exist
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     delete:
       tags:
         - GlobalVariables
@@ -589,7 +581,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
   /globals:
     get:
       tags:
@@ -619,7 +611,7 @@ paths:
                 type: array
                 description: A list of globals
                 items:
-                  $ref: '#/components/schemas/GlobalVariable'
+                  $ref: '#/definitions/GlobalVariable'
     post:
       tags:
         - GlobalVariables
@@ -631,22 +623,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GlobalVariable'
+              $ref: '#/definitions/GlobalVariable'
       responses:
         201:
           description: Object created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GlobalVariable'
+                $ref: '#/definitions/GlobalVariable'
         400:
           description: GlobalVariable already exists
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
-  # Templates
   /globals/templates/{global_template}:
     get:
       tags:
@@ -668,7 +659,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GlobalVariableTemplate'
+                $ref: '#/definitions/GlobalVariableTemplate'
         404:
           description: GlobalVariableTemplate does not exist.
     put:
@@ -691,20 +682,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GlobalVariableTemplate'
+              $ref: '#/definitions/GlobalVariableTemplate'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GlobalVariableTemplate'
+                $ref: '#/definitions/GlobalVariableTemplate'
         404:
           description: GlobalVariableTemplate does not exist
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     delete:
       tags:
         - GlobalVariables
@@ -727,7 +718,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
   /globals/templates:
     get:
       tags:
@@ -751,7 +742,7 @@ paths:
                 type: array
                 description: A list of globals
                 items:
-                  $ref: '#/components/schemas/GlobalVariableTemplate'
+                  $ref: '#/definitions/GlobalVariableTemplate'
     post:
       tags:
         - GlobalVariables
@@ -763,20 +754,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GlobalVariableTemplate'
+              $ref: '#/definitions/GlobalVariableTemplate'
       responses:
         201:
           description: Object created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GlobalVariableTemplate'
+                $ref: '#/definitions/GlobalVariableTemplate'
         400:
           description: GlobalVariable already exists
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   # ROLES
   /roles:
@@ -795,7 +786,7 @@ paths:
                 description: A list of roles
                 type: array
                 items:
-                  $ref: '#/components/schemas/Role'
+                  $ref: '#/definitions/Role'
     post:
       tags:
         - Roles
@@ -808,14 +799,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AddRole'
+              $ref: '#/definitions/AddRole'
       responses:
         201:
           description: Object created.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Role'
+                $ref: '#/definitions/Role'
         400:
           description: Object exists.
   /roles/{role_id}:
@@ -838,7 +829,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Role'
+                $ref: '#/definitions/Role'
         404:
           description: Object does not exist.
     put:
@@ -860,14 +851,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Role'
+              $ref: '#/definitions/Role'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Role'
+                $ref: '#/definitions/Role'
         404:
           description: Object does not exist.
     delete:
@@ -905,7 +896,7 @@ paths:
                 description: List of available resource actions
                 type: array
                 items:
-                  $ref: '#/components/schemas/AvailableResourceAction'
+                  $ref: '#/definitions/AvailableResourceAction'
 
   # SCHEDULER
   /scheduler:
@@ -921,7 +912,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Scheduler'
+                $ref: '#/definitions/Scheduler'
     put:
       tags:
         - Scheduler
@@ -969,7 +960,7 @@ paths:
                 description: A list of Scheduled Task objects
                 type: array
                 items:
-                  $ref: '#/components/schemas/ScheduledTask'
+                  $ref: '#/definitions/ScheduledTask'
     post:
       tags:
         - Scheduler
@@ -981,7 +972,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AddScheduledTask'
+              $ref: '#/definitions/AddScheduledTask'
       responses:
         201:
           description: Success
@@ -991,13 +982,13 @@ paths:
                 description: A list of Scheduled Task objects
                 type: array
                 items:
-                  $ref: '#/components/schemas/ScheduledTask'
+                  $ref: '#/definitions/ScheduledTask'
         400:
           description: Scheduled task already exists
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   /scheduledtasks/{scheduled_task_id}:
     parameters:
@@ -1018,13 +1009,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScheduledTask'
+                $ref: '#/definitions/ScheduledTask'
         404:
           description: Scheduled task does not exist
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     put:
       tags:
         - Scheduler
@@ -1036,26 +1027,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ScheduledTask'
+              $ref: '#/definitions/ScheduledTask'
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ScheduledTask'
+                $ref: '#/definitions/ScheduledTask'
         404:
           description: Scheduled task does not exist
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
         400:
           description: Scheduled task name already exists
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     delete:
       tags:
         - Scheduler
@@ -1069,7 +1060,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   # USERS
   /users:
@@ -1088,7 +1079,7 @@ paths:
                 type: array
                 description: A list of users
                 items:
-                  $ref: '#/components/schemas/DisplayUser'
+                  $ref: '#/definitions/DisplayUser'
     post:
       tags:
         - Users
@@ -1101,7 +1092,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AddUser'
+              $ref: '#/definitions/AddUser'
       responses:
         201:
           description: User created.
@@ -1109,13 +1100,13 @@ paths:
             application/json:
               schema:
                 description: The newly created user.
-                $ref: '#/components/schemas/DisplayUser'
+                $ref: '#/definitions/DisplayUser'
         400:
           description: Could not create user <username>. User already exists.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   /users/{user_id}:
     parameters:
@@ -1138,13 +1129,13 @@ paths:
             application/json:
               schema:
                 description: The user object matching the user id inputted
-                $ref: '#/components/schemas/DisplayUser'
+                $ref: '#/definitions/DisplayUser'
         404:
           description: Could not display user <username>. User does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     put:
       tags:
         - Users
@@ -1157,7 +1148,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EditUser'
+              $ref: '#/definitions/EditUser'
       responses:
         200:
           description: Success
@@ -1165,19 +1156,19 @@ paths:
             application/json:
               schema:
                 description: The updated user.
-                $ref: '#/components/schemas/DisplayUser'
+                $ref: '#/definitions/DisplayUser'
         400:
           description: Invalid password
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
         404:
           description: Could not edit user <username>. User does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     delete:
       tags:
         - Users
@@ -1192,13 +1183,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
         404:
           description: Could not delete user <username>. User does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   # WORKFLOWQUEUE
   /workflowqueue:
@@ -1223,7 +1214,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/WorkflowStatusSummary'
+                  $ref: '#/definitions/WorkflowStatusSummary'
     post:
       tags:
         - WorkflowQueue
@@ -1235,26 +1226,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExecuteWorkflow'
+              $ref: '#/definitions/ExecuteWorkflow'
       responses:
         202:
           description: Success asynchronous.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Uuid'
+                $ref: '#/definitions/Uuid'
         404:
           description: Workflow does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
         400:
           description: Invalid input error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
   /workflowqueue/{execution}:
     get:
@@ -1277,13 +1268,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WorkflowStatus'
+                $ref: '#/definitions/WorkflowStatus'
         404:
           description: Object does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     patch:
       tags:
         - WorkflowQueue
@@ -1295,7 +1286,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ControlWorkflow'
+              $ref: '#/definitions/ControlWorkflow'
       parameters:
         - name: execution
           in: path
@@ -1312,13 +1303,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
         400:
           description: Invalid input error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
 
 
   /workflowqueue/cleardb:
@@ -1369,13 +1360,13 @@ paths:
                 type: array
                 description: The JSON representation of all the workflows meta data
                 items:
-                  $ref: '#/components/schemas/WorkflowMetaData'
+                  $ref: '#/definitions/WorkflowMetaData'
         404:
           description: No workflows exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     post:
       tags:
         - Workflows
@@ -1396,21 +1387,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Workflow'
+              $ref: '#/definitions/Workflow'
       responses:
         201:
           description: Workflow created.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Workflow'
+                $ref: '#/definitions/Workflow'
 
         400:
           description: Workflow already exists.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
   /workflows/{workflow}:
     get:
       tags:
@@ -1437,13 +1428,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Workflow'
+                $ref: '#/definitions/Workflow'
         404:
           description: Workflow does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     put:
       tags:
         - Workflows
@@ -1456,7 +1447,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Workflow'
+              $ref: '#/definitions/Workflow'
       parameters:
         - name: workflow
           in: path
@@ -1474,19 +1465,19 @@ paths:
                 required: [workflow]
                 properties:
                   workflow:
-                    $ref: '#/components/schemas/Workflow'
+                    $ref: '#/definitions/Workflow'
         404:
           description: Workflow does not exist.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
         400:
           description: Workflow already exists.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/definitions/Error'
     delete:
       tags:
         - Workflows
@@ -1508,8 +1499,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-
+                $ref: '#/definitions/Error'
 
 securityDefinitions:
   AuthenticationToken:
@@ -1525,7 +1515,6 @@ securityDefinitions:
       implementation.
 security:
   - AuthenticationToken: []
-
 
 definitions:
   Error:
@@ -1596,23 +1585,23 @@ definitions:
         type: string
         description: A longer description of the API. Should be different from the title.
       contact_info:
-        $ref: '#/components/schemas/ApiContact'
+        $ref: '#/definitions/ApiContact'
       license_info:
-        $ref: '#/components/schemas/ApiLicense'
+        $ref: '#/definitions/ApiLicense'
       actions:
         description: Actions associated with this app
         type: array
         items:
-          $ref: '#/components/schemas/ActionApi'
+          $ref: '#/definitions/ActionApi'
       tags:
         type: array
         items:
-          $ref: '#/components/schemas/ApiTag'
+          $ref: '#/definitions/ApiTag'
         uniqueItems: true
       external_docs:
         type: array
         items:
-          $ref: '#/components/schemas/ExternalDoc'
+          $ref: '#/definitions/ExternalDoc'
 
 
   ApiContact:
@@ -1659,11 +1648,11 @@ definitions:
         enum: [ACTION, CONDITION, TRANSFORM, TRIGGER]
         description: The node type this action represents
       returns:
-        $ref: '#/components/schemas/ReturnApi'
+        $ref: '#/definitions/ReturnApi'
       parameters:
         type: array
         items:
-          $ref: '#/components/schemas/ParameterApi'
+          $ref: '#/definitions/ParameterApi'
         description: The parameters needed by this action
       deprecated:
         type: boolean
@@ -1675,7 +1664,7 @@ definitions:
       external_docs:
         type: array
         items:
-          $ref: '#/components/schemas/ExternalDoc'
+          $ref: '#/definitions/ExternalDoc'
 
   ParameterApi:
     type: object
@@ -1699,7 +1688,7 @@ definitions:
         default: false
         description: Is this parameter required
       schema:
-        $ref: '#/components/schemas/ParameterSchema'
+        $ref: '#/definitions/ParameterSchema'
 
   ReturnApi:
     type: object
@@ -1710,7 +1699,7 @@ definitions:
         type: string
         description: Description of the return type
       schema:
-        $ref: '#/components/schemas/ParameterSchema'
+        $ref: '#/definitions/ParameterSchema'
       example:
         description: An example of the returned type
 
@@ -1742,7 +1731,7 @@ definitions:
       external_docs:
         type: array
         items:
-          $ref: '#/components/schemas/ExternalDoc'
+          $ref: '#/definitions/ExternalDoc'
 
   ParameterSchema:
     type: object
@@ -1825,7 +1814,7 @@ definitions:
         description: The number of threads per worker process for executing workflows.
         default: 3
       cache:
-        $ref: '#/components/schemas/CacheConfig'
+        $ref: '#/definitions/CacheConfig'
 
   CacheConfig:
     type: object
@@ -1872,7 +1861,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         type: string
         description: Name of the dashboard
@@ -1880,7 +1869,7 @@ definitions:
         type: array
         description: List of widgets contained in the dashboard
         items:
-          $ref: '#/components/schemas/Widget'
+          $ref: '#/definitions/Widget'
   Widget:
     type: object
     required: [name, x, y, cols, rows, options]
@@ -1888,9 +1877,9 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       dashboard_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         type: string
         description: Name of the widget
@@ -1913,12 +1902,12 @@ definitions:
         type: object
 #      properties:
 #        workflow:
-#          $ref: '#/components/schemas/Uuid'
+#          $ref: '#/definitions/Uuid'
 #        execution:
 #          type: string
 #          description: Execution of the workflow to get data from (latest or uuid)
 #        action:
-#          $ref: '#/components/schemas/Uuid'
+#          $ref: '#/definitions/Uuid'
 
   GlobalVariable:
     type: object
@@ -1927,7 +1916,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         type: string
         description: The name of the global variable
@@ -1952,7 +1941,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         type: string
         description: The name of the global template
@@ -2006,7 +1995,7 @@ definitions:
         description: A list of resources that a user with this role can access
         type: array
         items:
-          $ref: '#/components/schemas/AddResource'
+          $ref: '#/definitions/AddResource'
 
   AddResource:
     type: object
@@ -2044,7 +2033,7 @@ definitions:
         example: [/users, /cases, /playbooks]
         type: array
         items:
-          $ref: '#/components/schemas/Resource'
+          $ref: '#/definitions/Resource'
 
   Resource:
     type: object
@@ -2100,7 +2089,7 @@ definitions:
         description: List if IDs of workflows attached to this task
         type: array
         items:
-          $ref: '#/components/schemas/Uuid'
+          $ref: '#/definitions/Uuid'
       name:
         type: string
         description: Name of this task
@@ -2112,7 +2101,7 @@ definitions:
         description: Status of the task
         enum: [running, stopped]
       task_trigger:
-        $ref: '#/components/schemas/TaskTrigger'
+        $ref: '#/definitions/TaskTrigger'
 
   ScheduledTask:
     type: object
@@ -2126,7 +2115,7 @@ definitions:
         description: List if IDs of workflows attached to this task
         type: array
         items:
-          $ref: '#/components/schemas/Uuid'
+          $ref: '#/definitions/Uuid'
       name:
         type: string
         description: Name of this task
@@ -2138,7 +2127,7 @@ definitions:
         description: Status of the task
         enum: [running, stopped]
       task_trigger:
-        $ref: '#/components/schemas/TaskTrigger'
+        $ref: '#/definitions/TaskTrigger'
       action:
         type: string
         enum: [start, stop]
@@ -2171,7 +2160,7 @@ definitions:
         example: password123
       roles:
         description: A list of role IDs that this user possesses. Roles can only be assigned to a User by an admin.
-        $ref: '#/components/schemas/RoleIdList'
+        $ref: '#/definitions/RoleIdList'
       active:
         description: activate/deactive a user. Active can only be changed by an admin.
         type: boolean
@@ -2201,7 +2190,7 @@ definitions:
         type: boolean
       roles:
         description: A new list of role IDs that this user will possess. Roles can only be assigned by an admin.
-        $ref: '#/components/schemas/RoleIdList'
+        $ref: '#/definitions/RoleIdList'
 
   DisplayUser:
     type: object
@@ -2241,7 +2230,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         description: The name of the workflow.
         type: string
@@ -2258,42 +2247,42 @@ definitions:
         description: Is this workflow able to be run?
         type: boolean
       errors:
-        $ref: '#/components/schemas/ExecutionElementErrors'
+        $ref: '#/definitions/ExecutionElementErrors'
       execution_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       start:
         description: ID of the starting action
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       actions:
         description: Action nodes in workflow
         type: array
         items:
-          $ref: "#/components/schemas/Action"
+          $ref: "#/definitions/Action"
       branches:
         description: Edges connecting nodes in workflow
         type: array
         items:
-          $ref: '#/components/schemas/Branch'
+          $ref: '#/definitions/Branch'
       conditions:
         description: Condition nodes in workflow
         type: array
         items:
-          $ref: '#/components/schemas/Condition'
+          $ref: '#/definitions/Condition'
       transforms:
         description: Transform nodes in workflow
         type: array
         items:
-          $ref: '#/components/schemas/Transform'
+          $ref: '#/definitions/Transform'
       triggers:
         description: Trigger nodes in workflow
         type: array
         items:
-          $ref: '#/components/schemas/Trigger'
+          $ref: '#/definitions/Trigger'
       workflow_variables:
         description: The environment variables for this workflow
         type: array
         items:
-          $ref: '#/components/schemas/WorkflowVariable'
+          $ref: '#/definitions/WorkflowVariable'
 
 
   WorkflowMetaData:
@@ -2303,7 +2292,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         description: The name of the workflow.
         type: string
@@ -2320,7 +2309,7 @@ definitions:
         description: Is this workflow able to be run?
         type: boolean
       errors:
-        $ref: '#/components/schemas/ExecutionElementErrors'
+        $ref: '#/definitions/ExecutionElementErrors'
 
   Action:
     type: object
@@ -2329,7 +2318,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
         description: The ID of the object. If updating a workflow and the Action object already exists, ID is required. Otherwise, this ID must be UUID4.
       parallelized:
         type: boolean
@@ -2355,15 +2344,15 @@ definitions:
         description: are the parameters of this action valid?
         type: boolean
       errors:
-        $ref: '#/components/schemas/ExecutionElementErrors'
+        $ref: '#/definitions/ExecutionElementErrors'
       parallel_parameter:
         description: Alternative parameter to parallelize the action on
-        $ref: '#/components/schemas/Parameter'
+        $ref: '#/definitions/Parameter'
       parameters:
         description: The input parameters to the action
         type: array
         items:
-          $ref: '#/components/schemas/Parameter'
+          $ref: '#/definitions/Parameter'
       priority:
         description: The priority for this Action, which will be compared to other Actions with the same parent Action, descending, i.e. 5 is the highest priority.
         type: integer
@@ -2372,7 +2361,7 @@ definitions:
         default: 3
       position:
         description: Position object representing various fields of the position of the Action in the playbook editor.
-        $ref: '#/components/schemas/Position'
+        $ref: '#/definitions/Position'
 
   Branch:
     type: object
@@ -2381,15 +2370,15 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       source_id:
         description: The source node ID for this Branch
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       errors:
-        $ref: '#/components/schemas/ExecutionElementErrors'
+        $ref: '#/definitions/ExecutionElementErrors'
       destination_id:
         description: The destination node ID for this Branch, if the conditions evaluate to True
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
 
   Parameter:
     type: object
@@ -2399,12 +2388,12 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         type: string
         example: regex
       errors:
-        $ref: '#/components/schemas/ExecutionElementErrors'
+        $ref: '#/definitions/ExecutionElementErrors'
       parallelized:
         type: boolean
         default: false
@@ -2421,7 +2410,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
         description: The ID of the object. If updating a workflow and the Condition object already exists, ID is required. Otherwise, do not include it.
       app_name:
         type: string
@@ -2441,13 +2430,13 @@ definitions:
         description: are the contents of this condition valid?
         type: boolean
       errors:
-        $ref: '#/components/schemas/ExecutionElementErrors'
+        $ref: '#/definitions/ExecutionElementErrors'
       conditional:
         type: string
         example: "if Pre_Hello_World_Action == 5: return Hello_World_Action"
       position:
         description: Position object representing various fields of the position of the Action in the playbook editor.
-        $ref: '#/components/schemas/Position'
+        $ref: '#/definitions/Position'
 
   Transform:
     type: object
@@ -2456,7 +2445,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
         description: The ID of the object. If updating a workflow and the Transform object already exists, ID is required. Otherwise, do not include it.
       app_name:
         type: string
@@ -2476,7 +2465,7 @@ definitions:
         description: are the contents of this transform valid?
         type: boolean
       errors:
-        $ref: '#/components/schemas/ExecutionElementErrors'
+        $ref: '#/definitions/ExecutionElementErrors'
       transform:
         description: The transform to apply to the result of its parent Action
         type: string
@@ -2485,7 +2474,7 @@ definitions:
         description: The parameter to pass to the chosen transform
       position:
         description: Position object representing various fields of the position of the Action in the playbook editor.
-        $ref: '#/components/schemas/Position'
+        $ref: '#/definitions/Position'
 
   Trigger:
     type: object
@@ -2494,7 +2483,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
         description: The ID of the object. If updating a workflow and the trigger object already exists, ID is required. Otherwise, do not include it.
       app_name:
         type: string
@@ -2514,13 +2503,13 @@ definitions:
         description: are the contents of this trigger valid?
         type: boolean
       errors:
-        $ref: '#/components/schemas/ExecutionElementErrors'
+        $ref: '#/definitions/ExecutionElementErrors'
       trigger_schema:
         description: Schema to validate sent data with
         type: object
       position:
         description: Position object representing various fields of the position of the Action in the playbook editor.
-        $ref: '#/components/schemas/Position'
+        $ref: '#/definitions/Position'
 
   Position:
     type: object
@@ -2529,7 +2518,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       x:
         type: number
         description: The X coordinate for the Action
@@ -2544,7 +2533,7 @@ definitions:
     additionalProperties: false
     properties:
       id_:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         type: string
         description: The name of the workflow variable
@@ -2559,7 +2548,7 @@ definitions:
     type: object
     properties:
       playbook_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       workflow_name:
         type: string
 
@@ -2574,9 +2563,9 @@ definitions:
     required: [execution_id, workflow_id, name, status]
     properties:
       execution_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       workflow_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         description: The name of the workflow.
         type: string
@@ -2603,16 +2592,16 @@ definitions:
         type: string
       node_status:
         description: The currently executing node
-        $ref: '#/components/schemas/NodeStatusSummary'
+        $ref: '#/definitions/NodeStatusSummary'
 
   WorkflowStatus:
     type: object
     required: [node_statuses, execution_id, workflow_id, name, status]
     properties:
       execution_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       workflow_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       name:
         description: The name of the workflow.
         type: string
@@ -2641,7 +2630,7 @@ definitions:
         description: The statuses of the workflow nodes
         type: array
         items:
-          $ref: '#/components/schemas/NodeStatus'
+          $ref: '#/definitions/NodeStatus'
 
   NodeStatus:
     type: object
@@ -2649,9 +2638,9 @@ definitions:
     required: [node_id, execution_id, label, name, app_name, status, started_at]
     properties:
       execution_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       node_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       label:
         description: The name of the node
         type: string
@@ -2695,9 +2684,9 @@ definitions:
     required: [node_id, execution_id, label, name, app_name]
     properties:
       execution_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       node_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       label:
         description: The name of the node
         type: string
@@ -2719,20 +2708,20 @@ definitions:
     required: [workflow_id]
     properties:
       workflow_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       execution_id:
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       start:
         description: The ID of the starting node
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       parameters:
         type: array
         items:
-          $ref: '#/components/schemas/Parameter'
+          $ref: '#/definitions/Parameter'
       workflow_variables:
         type: array
         items:
-          $ref: '#/components/schemas/WorkflowVariable'
+          $ref: '#/definitions/WorkflowVariable'
 
   ControlWorkflow:
     type: object
@@ -2744,7 +2733,7 @@ definitions:
         enum: ['trigger', 'abort']
       trigger_id:
         description: The ID of the trigger node
-        $ref: '#/components/schemas/Uuid'
+        $ref: '#/definitions/Uuid'
       trigger_data:
         description: The data that will be sent to the trigger
         type: string
