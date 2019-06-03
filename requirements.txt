@@ -7,4 +7,4 @@ docker
 docker-compose
 pyyaml
 sqlalchemy
-sphinxcontrib.httpdomain
+sphinxcontrib-openapi
