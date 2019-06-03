@@ -55,7 +55,8 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.ifconfig',
               'sphinx.ext.viewcode',
               'sphinx.ext.napoleon',
-              'sphinxcontrib.openapi'
+              'sphinxcontrib.openapi',
+              'm2r'
               ]
 
 # Add any paths that contain templates here, relative to this directory.

@@ -11,20 +11,20 @@
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Authentication'
+            $ref: '#/definitions/Authentication'
     responses:
       201:
         description: Success
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Token'
+              $ref: '#/definitions/Token'
       401:
         description: Unauthorized
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Error'
+              $ref: '#/definitions/Error'
     security: []
 
 /auth/refresh:
@@ -40,7 +40,7 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Token'
+              $ref: '#/definitions/Token'
       401:
         description: Unauthorized
         content:

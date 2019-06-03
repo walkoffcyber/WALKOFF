@@ -10,13 +10,13 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Configuration'
+              $ref: '#/definitions/Configuration'
       401:
         description: Unauthorized access
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Error'
+              $ref: '#/definitions/Error'
   put:
     tags:
       - Configuration
@@ -28,7 +28,7 @@
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Configuration'
+            $ref: '#/definitions/Configuration'
     responses:
       200:
         description: Success
@@ -37,7 +37,7 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Error'
+              $ref: '#/definitions/Error'
       515:
         description: Could not write configuration to file
         content:

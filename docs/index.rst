@@ -7,19 +7,19 @@ Deploying WALKOFF
 ------------------------
 **Ensure that Python 3.7+, Docker, pip, and git are installed** 
 
-#. Open a terminal on Linux or a command prompt on Windows, and run the command
+1. Open a terminal on Linux or a command prompt on Windows, and run the command
 
 .. code-block:: console
 
 		git clone https://github.com/nsacyber/WALKOFF.git
 
-#. Change directories to the WALKOFF directory
+2. Change directories to the WALKOFF directory
 
 .. code-block:: console
 
 		cd WALKOFF
 
-#. Perform the following commands to launch WALKOFF in stack mode
+3.  Perform the following commands to launch WALKOFF in stack mode
 
 .. code-block:: console
 
@@ -36,7 +36,7 @@ Note: If you have multiple NICs you will need to use --advertise-addr to pick an
 
 		docker stack deploy --compose-file docker-compose.yml walkoff
 
-#. Navigate to the default IP and port.
+4. Navigate to the default IP and port.
 
 .. code-block:: console
 
@@ -44,9 +44,9 @@ Note: If you have multiple NICs you will need to use --advertise-addr to pick an
 
 the default IP and the port can be changed in the server. Configuration settings will be saved in the data/walkoff.config file.
 
-#. Once navigated to the login page, the default username is "admin" and password is "admin." These can and should be changed upon initial login.
+5. Once navigated to the login page, the default username is "admin" and password is "admin." These can and should be changed upon initial login.
 
-#. To shutdown WALKOFF, run the following two commands
+6. To shutdown WALKOFF, run the following two commands
 
 .. code-block:: console
 		
@@ -66,12 +66,6 @@ the default IP and the port can be changed in the server. Configuration settings
 		Workflow Development <workflow.rst>
 		Prepackaged Applications <prepackaged_apps.rst>
 		Application Development <apps.rst>
-		Api Gateway <api.rst>
-
-
-Change Log
---------------
-
-*To view our complete changelog, please visit :ref: 'CHANGELOG.md'*
-
+		API Gateway <api.rst>
+        Changelog <changelog.rst>
 

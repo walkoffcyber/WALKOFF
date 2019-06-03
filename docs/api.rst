@@ -3,8 +3,7 @@ API Gateway
 
 apps
 -----
-
-.. openapi:: swagger_api.yaml
+.. openapi:: api.yaml
     :paths:
         /apps
         /apps/apis
@@ -13,7 +12,7 @@ apps
 
 auth
 ------
-.. openapi:: swagger_api.yaml
+.. openapi:: api.yaml
     :paths:
         /auth
         /auth/refresh
@@ -22,14 +21,14 @@ auth
 
 configuration
 --------------
-.. openapi:: swagger_api.yaml
+.. openapi:: api.yaml
     :paths:
         /configuration
 
 
 globals
 --------
-.. openapi:: swagger_api.yaml
+.. openapi:: api.yaml
     :paths:
         /globals
         /globals/{global_var}
@@ -39,34 +38,34 @@ globals
 
 roles
 ------
-.. openapi:: swagger_api.yaml
+.. openapi:: api.yaml
     :paths:
         /roles
 
 
 scheduler
 -----------
-.. openapi:: swagger_api.yaml
+.. openapi:: api.yaml
     :paths:
         /scheduler
 
 
 users
 ------
-.. openapi:: swagger_api.yaml
+.. openapi:: api.yaml
     :paths:
         /users
 
 
 workflows
 ----------
-.. openapi:: swagger_api.yaml
+.. openapi:: api.yaml
     :paths:
         /workflows
 
 
 dashboards
 -----------
-.. openapi:: swagger_api.yaml
+.. openapi:: api.yaml
     :paths:
         /dashboards
