@@ -29,10 +29,21 @@ tags:
     description: Workflow Operations
   - name: WorkflowQueue
     description: Workflow Control Operations
+  - name: Events
+    description: Event Operations
   - name: Scheduler
     description: Scheduler Operations
   - name: Dashboards
     description: Dashboard Operations
+  - name: Triggers
+    description: Trigger Operations
+  - name: Client
+    description: Serves up client pages
+  - name: System
+    description: System Resources
+  - name: TempInternal
+    description: TempInternal
+
 
 
 basePath: /api

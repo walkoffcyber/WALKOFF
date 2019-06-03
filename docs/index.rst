@@ -72,6 +72,6 @@ the default IP and the port can be changed in the server. Configuration settings
 Change Log
 --------------
 
-*To view our complete changelog, please visit* :ref: 'CHANGELOG.md'
+*To view our complete changelog, please visit :ref: 'CHANGELOG.md'*
 
 
