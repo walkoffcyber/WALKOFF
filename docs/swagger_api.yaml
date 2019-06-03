@@ -85,8 +85,7 @@ paths:
           in: query
           description: page of data to get
           required: false
-          schema:
-            type: integer
+          type: integer
       responses:
         200:
           description: Success
@@ -129,8 +128,7 @@ paths:
           in: path
           description: Name OR ID of the app to get
           required: true
-          schema:
-            type: string
+          type: string
       responses:
         200:
           description: Success
@@ -156,8 +154,7 @@ paths:
           in: path
           description: Name OR ID of the app to get
           required: true
-          schema:
-            type: string
+          type: string
       requestBody:
         description: The app api object to be updated
         required: true
@@ -196,8 +193,7 @@ paths:
           in: path
           description: Name OR ID of the app to get
           required: true
-          schema:
-            type: string
+          type: string
       responses:
         204:
           description: Success
@@ -374,8 +370,7 @@ paths:
           in: query
           description: page of data to get
           required: false
-          schema:
-            type: integer
+          type: integer
       responses:
         200:
           description: Success
@@ -460,9 +455,8 @@ paths:
         - in: path
           name: dashboard
           description: ID of the global to be fetched
-          schema:
-            type: string
-            format: uuid
+          type: string
+#            format: uuid
           required: true
       responses:
         200:
@@ -487,9 +481,8 @@ paths:
         - in: path
           name: dashboard
           description: ID of the global to be fetched
-          schema:
-            type: string
-            format: uuid
+          type: string
+            #format: uuid
           required: true
       responses:
         201:
@@ -517,16 +510,14 @@ paths:
         - in: path
           name: global_var
           description: ID of the global to be fetched
-          schema:
-            type: string
-            format: uuid
+          type: string
+          #  format: uuid
           required: true
         - name: to_decrypt
           in: query
           description: 'Determine whether or not to decrypt global variable'
-          schema:
-            type: string
-            enum: ["false"]
+          type: string
+          enum: ["false"]
       responses:
         200:
           description: Success
@@ -546,9 +537,8 @@ paths:
         - in: path
           name: global_var
           description: ID of the global to be fetched
-          schema:
-            type: string
-            format: uuid
+          type: string
+          #  format: uuid
           required: true
       requestBody:
         description: The new global object to be updated
@@ -580,9 +570,8 @@ paths:
         - in: path
           name: global_var
           description: ID of the global to be fetched
-          schema:
-            type: string
-            format: uuid
+          type: string
+          #format: uuid
           required: true
       responses:
         204:
@@ -605,14 +594,12 @@ paths:
           in: query
           description: page of data to get
           required: false
-          schema:
-            type: integer
+          type: integer
         - name: to_decrypt
           in: query
           description: 'Determine whether or not to decrypt global variable'
-          schema:
-            type: string
-            enum: ["false"]
+          type: string
+          enum: ["false"]
       responses:
         200:
           description: Success
@@ -660,9 +647,8 @@ paths:
         - in: path
           name: global_template
           description: ID of the global template to be fetched
-          schema:
-            type: string
-            format: uuid
+          type: string
+          #  format: uuid
           required: true
       responses:
         200:
@@ -683,9 +669,8 @@ paths:
         - in: path
           name: global_template
           description: ID of the global template to be fetched
-          schema:
-            type: string
-            format: uuid
+          type: string
+           # format: uuid
           required: true
       requestBody:
         description: The new global template to be updated
@@ -717,9 +702,8 @@ paths:
         - in: path
           name: global_template
           description: ID of the global template to be fetched
-          schema:
-            type: string
-            format: uuid
+          type: string
+          #  format: uuid
           required: true
       responses:
         204:
@@ -742,8 +726,7 @@ paths:
           in: query
           description: page of data to get
           required: false
-          schema:
-            type: integer
+          type: integer
       responses:
         200:
           description: Success
@@ -832,8 +815,7 @@ paths:
           in: path
           description: The name that needs to be fetched.
           required: true
-          schema:
-            type: string
+          type: string
       responses:
         200:
           description: Success
@@ -854,8 +836,7 @@ paths:
           in: path
           description: The name that needs to be fetched.
           required: true
-          schema:
-            type: string
+          type: string
       requestBody:
         description: Updated fields for the role object
         required: true
@@ -883,8 +864,7 @@ paths:
           in: path
           description: The name that needs to be fetched.
           required: true
-          schema:
-            type: string
+          type: string
       responses:
         204:
           description: Success
@@ -1007,8 +987,7 @@ paths:
         in: path
         description: The ID of the scheduled task.
         required: true
-        schema:
-          type: string
+        type: string
     get:
       tags:
         - Scheduler
@@ -1125,8 +1104,7 @@ paths:
         in: path
         description: The id of the user to be fetched
         required: true
-        schema:
-          type: integer
+        type: integer
     get:
       tags:
         - Users
@@ -1215,8 +1193,7 @@ paths:
           in: query
           description: page of data to get
           required: false
-          schema:
-            type: integer
+          type: integer
       responses:
         200:
           description: Success
@@ -1270,9 +1247,8 @@ paths:
           in: path
           description: The ID of the execution to get.
           required: true
-          schema:
-            type: string
-            format: uuid
+          type: string
+            #format: uuid
       responses:
         200:
           description: Success
@@ -1303,9 +1279,8 @@ paths:
           in: path
           description: The ID of the execution to get.
           required: true
-          schema:
-            type: string
-            format: uuid
+          type: string
+          #  format: uuid
       responses:
         204:
           description: Success.
@@ -1329,14 +1304,12 @@ paths:
         in: query
         description: Whether or not to delete all workflow statuses, defaults to false
         required: false
-        schema:
-          type: boolean
+        type: boolean
       - name: days
         in: query
         description: The number of days of workflow statuses to keep
         required: false
-        schema:
-          type: integer
+        type: integer
     delete:
       tags:
         - WorkflowQueue
@@ -1360,8 +1333,7 @@ paths:
           in: query
           description: page of data to get
           required: false
-          schema:
-            type: integer
+          type: integer
       responses:
         200:
           description: Success
@@ -1388,9 +1360,8 @@ paths:
         - in: query
           name: source
           description: The ID of the workflow to clone
-          schema:
-            type: string
-            format: uuid
+          type: string
+          #format: uuid
           required: false
       requestBody:
         description: The workflow object to be created
@@ -1425,14 +1396,12 @@ paths:
           in: path
           description: 'The name or ID of the workflow to get.'
           required: true
-          schema:
-            type: string
+          type: string
         - name: mode
           in: query
           description: 'Set to export to send as file.'
-          schema:
-            type: string
-            enum: ["export"]
+          type: string
+          enum: ["export"]
       responses:
         200:
           description: Success
@@ -1464,8 +1433,7 @@ paths:
           in: path
           description: 'The name or ID of the workflow to get.'
           required: true
-          schema:
-            type: string
+          type: string
       responses:
         200:
           description: Success
@@ -1500,8 +1468,7 @@ paths:
           in: path
           description: 'The name or ID of the workflow to get.'
           required: true
-          schema:
-            type: string
+          type: string
       responses:
         204:
           description: Success
