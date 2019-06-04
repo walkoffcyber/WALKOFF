@@ -2,7 +2,10 @@
 
 Welcome to WALKOFF's documentation!
 ===================================
-Welcome to Walkoff’s Python documentation. If you are looking for documentation and tutorials on getting started with Walkoff, please first look at our Github Pages site. Here you’ll find tutorials and documentation on both UI usage and app and interface development. This documentation is intended to help app and interface developers as well as provide a reference for project contributors.
+This documentation is intended to help app and interface developers as well as provide a reference for project contributors.
+Here you’ll find tutorials and information on WALKOFF interface and workflow development as well as application development.
+Look below for information on getting started with WALKOFF.
+
 
 
 Deploying WALKOFF
@@ -21,6 +24,7 @@ Deploying WALKOFF
 
 		cd WALKOFF
 
+.. _encryption_key_label:
 3. Create an encryption key
 
 .. code-block:: console
@@ -51,7 +55,7 @@ Note: If you have multiple NICs you will need to use --advertise-addr to pick an
 
 		localhost:8080
 
-the default IP and the port can be changed in the server. Configuration settings will be saved in the data/walkoff.config file.
+the default IP and the port can be changed in the server. Configuration settings will be saved in the ``common/config.py`` file.
 
 5. Once navigated to the login page, the default username is "admin" and password is "admin." These can and should be changed upon initial login.
 
