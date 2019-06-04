@@ -10,7 +10,7 @@ Here you’ll find tutorials and information on WALKOFF interface and workflow d
 Look below for information on getting started with WALKOFF.
 
 
-
+.. _deploying-walkoff-label:
 Deploying WALKOFF
 ------------------------
 **Ensure that Python 3.7+, Docker, pip, and git are installed** 
@@ -27,7 +27,7 @@ Deploying WALKOFF
 
             cd WALKOFF
 
-.. _encryption-key-label:
+
 3. Create an encryption key
 
     .. code-block:: console
