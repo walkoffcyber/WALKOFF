@@ -12,9 +12,6 @@ What is WALKOFF?
 ------------------
 WALKOFF is a flexible, easy to use, automation framework allowing users to integrate their capabilities and devices to cut through the repetitive, tedious tasks slowing them down
 
-|br| |br| Act **smarter** with WALKOFF by automatically gathering data, analyzing data, or visualizing data customized to your requirements.
-|br| Act **faster** with WALKOFF by integrating the capabilities you already own to dynamically respond on your terms to your fast moving environment.
-
 **WHAT WE OFFER**
     * *Easy-to-use:* Drag-and-drop workflow editor. Sharable apps and workflows
     * *Flexbility:* Deployable on Windows or Linux
