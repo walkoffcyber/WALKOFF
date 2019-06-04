@@ -37,24 +37,23 @@ Deploying WALKOFF
 
 3.  Perform the following commands to launch WALKOFF in stack mode
 
-    .. code-block:: console
+        .. code-block:: console
 
-            docker swarm init
+                docker swarm init
 
-    **Note:** If you have multiple NICs you will need to use --advertise-addr to pick an address from which the swarm will be accessible.
+        **Note:** If you have multiple NICs you will need to use --advertise-addr to pick an address from which the swarm will be accessible.
 
-    .. code-block:: console
+        .. code-block:: console
 
-            docker-compose build
-            docker stack deploy --compose-file docker-compose.yml walkoff
+                docker-compose build
+                docker stack deploy --compose-file docker-compose.yml walkoff
 
-4. Navigate to the default IP and port.
+4. Navigate to the default IP and port. The default IP and the port can be changed in the server. Configuration settings will be saved in the ``common/config.py`` file.
+
 
     .. code-block:: console
 
             localhost:8080
-
-the default IP and the port can be changed in the server. Configuration settings will be saved in the ``common/config.py`` file.
 
 5. Once navigated to the login page, the default username is "admin" and password is "admin." These can and should be changed upon initial login.
 
