@@ -1,3 +1,5 @@
+.. _prepackaged_apps:
+
 Prepackaged Applications
 ========================
 

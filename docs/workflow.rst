@@ -1,4 +1,6 @@
-Worflow Development
+.. _workflow_dev:
+
+Workflow Development
 ========================
 
 

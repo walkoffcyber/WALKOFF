@@ -1,3 +1,5 @@
+.. _interface:
+
 Interface Overview:
 ========================
 In this tutorial, we will briefly cover each of the components of the WALKOFF UI.
