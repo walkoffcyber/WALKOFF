@@ -21,6 +21,13 @@ Deploying WALKOFF
 
 		cd WALKOFF
 
+3. Create an encryption key
+
+.. code-block:: console
+
+        python key_creation.py | docker secret create encryption_key -
+
+
 3.  Perform the following commands to launch WALKOFF in stack mode
 
 .. code-block:: console

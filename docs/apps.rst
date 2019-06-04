@@ -25,6 +25,7 @@ Porting Your Script into WALKOFF
     * You can test building your app before running it in WALKOFF:
 
 .. code-block:: console
+
     docker build -f apps/app_name/1.0.0/Dockerfile apps/app_name/1.0.0
 
 
