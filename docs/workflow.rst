@@ -1,7 +1,15 @@
 .. _workflow_dev:
 
+.. |br| raw:: html
+
+  <br />
+  
+Workflow Development
+====================
+Below you can find information about how to create a workflow as well as the tools that are available to you as a user.
+
 Workflow Creation
-========================
+-----------------
 In this tutorial, we will create our first, basic workflow in order to demonstrate the general features of the workflow editor.
 
 
@@ -38,7 +46,44 @@ Save and Execute Workflow
 	Use the Save button and the Execute button in the toolbar.
 .. image:: ../docs/images/save_and_execute.png
 
+
+
 Examine Results:
 ''''''''''''''''
 	Now you can either check the results of your workflow under the 'Execution' tab below your workflow, or you can navigate to the 'Execution' tab at the top of the screen for a more organized view of your app. If everything was configured properly you can expect to see results identical to what is shown below.
 .. image:: ../docs/images/results.PNG
+
+|br|
+
+Workflow Editor
+---------------
+In this tutorial, we will explore the different components of the Workflow Editor interface.
+
+Toolbar:
+''''''''
+From left to right, the buttons in the toolbar are: 
+
++-----------------------+-----------------------------------------------+
+|   Save Workflow       | Saves current workflow under specified name	|
++-----------------------+-----------------------------------------------+
+|        Undo	       	| Reverts the most recent change in the editor	|
++-----------------------+-----------------------------------------------+
+|        Redo	       	|   Reapplies the most recent undone action	|
++-----------------------+-----------------------------------------------+
+| Delete Selected Nodes	|    Deletes the selected Action or Edge	|
++-----------------------+-----------------------------------------------+
+|        Copy		|        Copies the selected Action		|
++-----------------------+-----------------------------------------------+
+|        Paste		|  Pastes the previously copied or cut Action	|
++-----------------------+-----------------------------------------------+
+|    Execute Workflow	|  Schedules the Workflow to run immediately	|
++-----------------------+-----------------------------------------------+
+| Clear Execution 	|   Clears the green/ red highlighting of 	|
+| Results		|   executed actions				|
++-----------------------+-----------------------------------------------+
+|    Edit Description	|  Allows you to edit the description of the 	|
+|			|  workflow you are currently working on	|
++-----------------------+-----------------------------------------------+
+|    Create Variable	| Creates workflow variabe that is local to the	|
+|			| workflow you are currently working on		|
++-----------------------+-----------------------------------------------+
