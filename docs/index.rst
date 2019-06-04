@@ -6,9 +6,20 @@
 Welcome to WALKOFF's documentation!
 ===================================
 This documentation is intended to help app and interface developers as well as provide a reference for project contributors.
-Here you’ll find tutorials and information on WALKOFF interface and workflow development as well as application development.
-Look below for information on getting started with WALKOFF.
+Here you’ll find walk-through tutorials and information on WALKOFF interface and workflow development as well as application development.
 
+What is WALKOFF?
+------------------
+WALKOFF is a flexible, easy to use, automation framework allowing users to integrate their capabilities and devices to cut through the repetitive, tedious tasks slowing them down
+
+|br| |br| Act **smarter** with WALKOFF by automatically gathering data, analyzing data, or visualizing data customized to your requirements.
+|br| Act **faster** with WALKOFF by integrating the capabilities you already own to dynamically respond on your terms to your fast moving environment.
+
+**WHAT WE OFFER**
+    * *Easy-to-use:* Drag-and-drop workflow editor. Sharable apps and workflows
+    * *Flexbility:* Deployable on Windows or Linux
+    * *Modular:* Plug and play integration of almost anything with easy-to-develop applications
+    * *Visual Analytics:* Send workflow data to custom visual interface dashboards
 
 .. _deploying-walkoff-label:
 
