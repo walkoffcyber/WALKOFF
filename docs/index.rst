@@ -17,46 +17,42 @@ Deploying WALKOFF
 
 1. Open a terminal on Linux or a command prompt on Windows, and run the command
 
-.. code-block:: console
+    .. code-block:: console
 
-		git clone https://github.com/nsacyber/WALKOFF.git
+            git clone https://github.com/nsacyber/WALKOFF.git
 
 2. Change directories to the WALKOFF directory
 
-.. code-block:: console
+    .. code-block:: console
 
-		cd WALKOFF
+            cd WALKOFF
 
 .. _encryption-key-label:
 3. Create an encryption key
 
-.. code-block:: console
+    .. code-block:: console
 
-        python key_creation.py | docker secret create encryption_key -
+            python key_creation.py | docker secret create encryption_key -
 
 
 3.  Perform the following commands to launch WALKOFF in stack mode
 
-.. code-block:: console
+    .. code-block:: console
 
-		docker swarm init
+            docker swarm init
 
-Note: If you have multiple NICs you will need to use --advertise-addr to pick an address from which the swarm will be accessible.
+    **Note:** If you have multiple NICs you will need to use --advertise-addr to pick an address from which the swarm will be accessible.
 
-.. code-block:: console
+    .. code-block:: console
 
-		docker-compose build
-
-
-.. code-block:: console
-
-		docker stack deploy --compose-file docker-compose.yml walkoff
+            docker-compose build
+            docker stack deploy --compose-file docker-compose.yml walkoff
 
 4. Navigate to the default IP and port.
 
-.. code-block:: console
+    .. code-block:: console
 
-		localhost:8080
+            localhost:8080
 
 the default IP and the port can be changed in the server. Configuration settings will be saved in the ``common/config.py`` file.
 
@@ -64,16 +60,12 @@ the default IP and the port can be changed in the server. Configuration settings
 
 6. To shutdown WALKOFF, run the following two commands
 
-.. code-block:: console
-		
-		docker stack rm walkoff
+    .. code-block:: console
 
-.. code-block:: console
-		
-		docker-compose down
+            docker stack rm walkoff
+            docker-compose down
 
 
-|br|
 |br|
 
 .. toctree::

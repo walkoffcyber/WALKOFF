@@ -60,9 +60,9 @@ Development Instructions
     * If your application's python dependencies require any OS libraries to build or if your application required any OS packages to run, include them in this file.
     * You can test building your app with the Dockerfile before running it in WALKOFF:
 
-.. code-block:: console
+        .. code-block:: console
 
-        docker build -f apps/app_name/1.0.0/Dockerfile apps/app_name/1.0.0
+                docker build -f apps/app_name/1.0.0/Dockerfile apps/app_name/1.0.0
 
 
 
@@ -76,7 +76,6 @@ Naming and String Requirements:
     * Your action names in ``api.yaml`` must match the function names they correspond to in ``app.py``
     * If your script is not named ``app.py``, the new name must match the command at the end of your ``Dockerfile``
 
-|br|
 |br|
 
 Troubleshooting
