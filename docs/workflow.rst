@@ -10,7 +10,7 @@ Create Global
 	Before we create a workflow, we will create a global that our actions will use.
 	
 	In the top navigation bar, click on "Globals", then "Add Global". Fill out the required fields for this example and set the value to an integer between 1-10. Then click "Save" in the dialog box. If nothing is populated in the globals table then verify that you created your encryption key by going to 
-	:ref:`deploying-walkoff-label`.
+	:ref:`encryption-label`.
 	
 .. image:: ../docs/images/create_global.png
 
@@ -38,7 +38,7 @@ Save and Execute Workflow
 	Use the Save button and the Execute button in the toolbar.
 .. image:: ../docs/images/save_and_execute.png
 
-Eaxmine Results:
+Examine Results:
 ''''''''''''''''
 	Now you can either check the results of your workflow under the 'Execution' tab below your workflow, or you can navigate to the 'Execution' tab at the top of the screen for a more organized view of your app. If everything was configured properly you can expect to see results identical to what is shown below.
 .. image:: ../docs/images/results.PNG

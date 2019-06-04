@@ -39,6 +39,7 @@ Deploying WALKOFF
 
             cd WALKOFF
 
+.. _encryption-label:
 
 3. Create an encryption key
 
