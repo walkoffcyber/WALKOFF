@@ -148,7 +148,8 @@ Node Types
 
 Trigger
 ~~~~~~~
-	Actions can wait on Triggers to fire before executing. To use one, select the "Builtin" app in the app bar. Either double click or drag the "Trigger" action to the workflow space. Fill out the appropriate arguments and connect the components as you would any other action. In order to use a trigger, you will need to grab the execution id found on the right side of the page and deliver an api call to /trigger as well as everything else need for a basic api call. 
+	Actions can wait on Triggers to fire before executing. To use one, select the "Builtin" app in the app bar. Either double click or drag the "Trigger" action to the workflow space. Fill out the appropriate arguments and connect the components as you would any other action. In order to use a trigger, you will need to grab the execution id found on the right side of the page and deliver an api call to /trigger as well as everything else need for a basic api call. Trigger api calls can be found at 
+	:ref:`api_gateway`. 
 	
 Condition
 ~~~~~~~~~
