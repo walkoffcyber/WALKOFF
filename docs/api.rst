@@ -12,8 +12,8 @@ apps
         /apps/apis/{app}
 
 
-auth
-------
+authorization
+--------------
 .. openapi:: api.yaml
     :paths:
         /auth
@@ -43,6 +43,8 @@ roles
 .. openapi:: api.yaml
     :paths:
         /roles
+        /roles/{role_id}
+        /availableresourceactions
 
 
 scheduler
@@ -50,6 +52,8 @@ scheduler
 .. openapi:: api.yaml
     :paths:
         /scheduler
+        /scheduledtasks
+        /scheduledtasks/{scheduled_task_id}
 
 
 users
@@ -57,6 +61,7 @@ users
 .. openapi:: api.yaml
     :paths:
         /users
+        /users/{user_id}
 
 
 workflows
@@ -64,6 +69,16 @@ workflows
 .. openapi:: api.yaml
     :paths:
         /workflows
+        /workflows/{workflow}
+
+
+workflowqueue
+--------------
+.. openapi:: api.yaml
+    :paths:
+        /workflowqueue
+        /workflowqueue/{execution}
+        /workflowqueue/cleardb
 
 
 dashboards
@@ -71,3 +86,4 @@ dashboards
 .. openapi:: api.yaml
     :paths:
         /dashboards
+        /dashboards/{dashboard}

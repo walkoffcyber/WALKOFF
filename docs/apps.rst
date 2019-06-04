@@ -3,35 +3,40 @@
 Application Development
 ========================
 
-I am WALKOFF d
 
 Development Instructions
 -------------------------
 
 Write Python Functions in a Standalone Script
 ''''''''''''''''''''''''''''''''''''''''''''''
-Start by developing your app in a standalone script outside of WALKOFF – this way you can get basic functionality down before dealing with WALKOFF.
-All functions that you expect to turn into actions must be written with async (i.e. " async def function_name() ")
+* Start by developing your app in a standalone script outside of WALKOFF – this way you can get basic functionality down before dealing with WALKOFF.
+* **Note:** all functions that you expect to turn into actions must be written asynchronously (i.e. ``async def function_name()``)
 
-Port your script into WALKOFF
-''''''''''''''''''''''''''''''
-* Place your script into the WALKOFF app directory structure, using existing apps (such as the hello_world app directory) as examples.
-* Note: Only files under **src** will be copied into the application's Docker container.
-* Write an **api.yaml** which describes your app and its functions to WALKOFF.
-* Write a requirements.txt which lists any python dependencies your app has. The Dockerfile will use this to pip install dependencies.
-* Write a docker-compose.yml which controls how your app’s Docker container will run (at a minimum, it just needs the service name to match)
-* If you want directories on your host to be available in the container, you can add volume mounts here.
-* Write a Dockerfile which controls how your app will be built. Things to add (see hello_world’s Dockerfile for examples):
-* If your app’s Python dependencies require any OS libraries to build
-* If your app requires any OS packages to run, install those here
-* You can test building your app before running it in WALKOFF: docker build -f apps/app_name/1.0.0/Dockerfile apps/app_name/1.0.0
+
+Porting Your Script into WALKOFF
+'''''''''''''''''''''''''''''''''''
+* Place your script into the WALKOFF app directory structure, using existing apps as examples.
+    * **Note:** Only files under ``src`` will be copied into the application's Docker container.
+* Write an ``api.yaml`` which describes your app and its functions to WALKOFF.
+* Write a ``requirements.txt`` which lists any python dependencies your app has. The Dockerfile will use this to pip install dependencies.
+* Write a ``docker-compose.yml`` which controls how your app’s Docker container will run. At a minimum, utilize the ``hello_world`` application's docker-compose and simply change the service name to match that of your new application.
+    * **Note:** If you want directories on your host to be available in the container, you can add volume mounts here.
+* Write a ``Dockerfile`` which controls how your app will be built. See ``hello_world’s Dockerfile`` for a detailed example. If your application's python dependencies require any OS libraries to build or if your application required any OS packages to run, include them in this file.
+    * You can test building your app before running it in WALKOFF:
+
+.. code-block:: console
+    docker build -f apps/app_name/1.0.0/Dockerfile apps/app_name/1.0.0
+
 
 Naming and String Requirements:
 '''''''''''''''''''''''''''''''''
-* App name must be snake_case and match in all the following locations:
-* App directory, app_name in app.py, name in api.yaml, service name in docker-compose.yml
-* Your action names in api.yaml must match the function names they correspond to in app.py
-* If your script is not named app.py, the new name must match the command at the end of your Dockerfile
+* App name must be ``snake_case`` and match in all the following locations:
+    #. app directory
+    #. app_name in ``app.py``
+    #. app_name in ``api.yaml``
+    #. service name in ``docker-compose.yml``
+* Your action names in ``api.yaml`` must match the function names they correspond to in ``app.py``
+* If your script is not named ``app.py``, the new name must match the command at the end of your ``Dockerfile``
 
 
 
