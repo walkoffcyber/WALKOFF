@@ -9,7 +9,9 @@ Create Global
 '''''''''''''
 	Before we create a workflow, we will create a global that our actions will use.
 	
-	In the top navigation bar, click on "Globals", then "Add Global". Fill out the required fields for this example and set the value to an integer between 1-10. Then click "Save" in the dialog box. If nothing is populated in the globals table then verify that you created your encryption key by going to :ref:'index'.
+	In the top navigation bar, click on "Globals", then "Add Global". Fill out the required fields for this example and set the value to an integer between 1-10. Then click "Save" in the dialog box. If nothing is populated in the globals table then verify that you created your encryption key by going to 
+	:ref:`deploying-walkoff-label`.
+	
 .. image:: ../docs/images/create_global.png
 
 Create Workflow
