@@ -27,7 +27,7 @@ Deploying WALKOFF
 
 		cd WALKOFF
 
-.. _encryption_key_label:
+.. _encryption-key-label:
 3. Create an encryption key
 
 .. code-block:: console
