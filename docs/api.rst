@@ -3,8 +3,11 @@
 API Gateway
 ========================
 
+API Endpoints
+---------------
+
 apps
------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /apps
@@ -13,7 +16,7 @@ apps
 
 
 authorization
---------------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /auth
@@ -22,14 +25,14 @@ authorization
 
 
 configuration
---------------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /configuration
 
 
 globals
---------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /globals
@@ -39,7 +42,7 @@ globals
 
 
 roles
-------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /roles
@@ -48,7 +51,7 @@ roles
 
 
 scheduler
------------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /scheduler
@@ -57,7 +60,7 @@ scheduler
 
 
 users
-------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /users
@@ -65,7 +68,7 @@ users
 
 
 workflows
-----------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /workflows
@@ -73,7 +76,7 @@ workflows
 
 
 workflowqueue
---------------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /workflowqueue
@@ -82,8 +85,12 @@ workflowqueue
 
 
 dashboards
------------
+''''''''''''''''''''''''''''''''''''''''''''''
 .. openapi:: api.yaml
     :paths:
         /dashboards
         /dashboards/{dashboard}
+
+
+JSON Formulation
+------------------
