@@ -1,4 +1,7 @@
 .. _index:
+.. |br| raw:: html
+
+   <br />
 
 Welcome to WALKOFF's documentation!
 ===================================
@@ -70,10 +73,12 @@ the default IP and the port can be changed in the server. Configuration settings
 		docker-compose down
 
 
+|br|
+|br|
 
 .. toctree::
    :maxdepth: 2
-   :caption: Table of Contents:
+   :caption: Contents:
 
 		Interface Overview <interface.rst>
 		Workflow Development <workflow.rst>

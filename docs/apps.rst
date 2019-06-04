@@ -9,6 +9,7 @@ Application Development
 
 Development Instructions
 -------------------------
+*For a more complete example of a WALKOFF application, please refer to the hello_world skeleton application in the WALKOFF/apps directory.*
 
 **1. Write Python Functions in a Standalone Script**
     * Start by developing your app and its functions in a standalone script outside of WALKOFF – this way you can get basic functionality down before dealing with WALKOFF.
@@ -48,11 +49,21 @@ Development Instructions
 
         docker build -f apps/app_name/1.0.0/Dockerfile apps/app_name/1.0.0
 
+Please note, the minimal directory structure for an application is as follows:
 
-Developing Conditions and Triggers
-''''''''''''''''''''''''''''''''''''
-**Develop a Condition**
-**Develop a Trigger**
+.. code-block:: console
+
+        WALKOFF
+        +-- apps
+             +-- app_name
+                  +-- version_number
+                       |-- Dockerfile
+                       |-- docker-compose.yml
+                       |-- api.yml
+                       +-- src
+                            +-- your_code.{c, cpp, py,..., etc.}
+                            +-- any other files you wish to be accessible in the app container
+
 
 Naming and String Requirements:
 '''''''''''''''''''''''''''''''''
@@ -64,7 +75,6 @@ Naming and String Requirements:
     * Your action names in ``api.yaml`` must match the function names they correspond to in ``app.py``
     * If your script is not named ``app.py``, the new name must match the command at the end of your ``Dockerfile``
 
-|br|
 |br|
 |br|
 
@@ -84,8 +94,42 @@ There are several key places to look to debug an application:
 4.  **App Service Logs**
     |br| Checking the app service log after the service becomes available for the first time (docker service logs -f walkoff_app_app_name) will allow you to view the stdout of your app, as well as any exceptions it might be raising.
 	
-5.  **App Containers**|br|
+5.  **App Containers**
+
     * Obtain app_container_name from docker ps.
     * You can docker exec -it app_container_name /bin/sh into your app container while it is running to check things like network connectivity, the filesystem, or to run your app manually inside it. (If it is crashing on startup, you will need to fix that first or override its starting command with a sleep instead)
-    * You can also run the app manually outside of docker entirely: `APP SDK <https://github.com/nsacyber/WALKOFF/tree/1.0.0-alpha.1/app_sdk>`_.
+
+You can also run the app manually outside of docker entirely. Keep in mind while running your app this way, you will have access to your host's filesystem in a way that is not normally accessible to app containers.
+    1. Install the WALKOFF App SDK (assuming you're starting from WALKOFF's directory)
+
+.. code-block:: console
+
+        cd app_sdk
+        pip install -e .
+
+    2. Run the rest of WALKOFF via docker-compose as described in the main Readme
+
+.. code-block:: console
+
+        cd ..
+        docker-compose up -d --build
+
+    3. Export environment variables that the app would normally expect inside its container, but change service names to localhost
+
+.. code-block:: console
+
+        export REDIS_URI=redis://localhost
+        export REDIS_ACTION_RESULT_CH=action-results
+        export REDIS_ACTION_RESULTS_GROUP=action-results-group
+        export APP_NAME=hello_world
+        export HOSTNAME=$(hostname)
+        export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+
+    4. Navigate to and run your app.py. The app will exit after a set period if no work is found, so ensure you run your app just before the workflow.
+
+.. code-block:: console
+
+        python apps/hello_world/1.0.0/src/app.py
+
+
 
