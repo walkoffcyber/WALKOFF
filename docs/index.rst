@@ -80,7 +80,8 @@ Deploying WALKOFF
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+		
+		Home <self>
 		Interface Overview <interface.rst>
 		Workflow Development <workflow.rst>
 		Prepackaged Applications <prepackaged_apps.rst>
