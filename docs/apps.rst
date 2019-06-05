@@ -66,7 +66,7 @@ Development Instructions
 
 Updating Your Application 
 ''''''''''''''''''''''''''''
-If your application Docker service is already running and you would like to update your app in WALKOFF, run these following commands with the proper substitions for your ``snake_case`` application name for ``hello_world``
+If your application Docker service is already running and you would like to update your app in WALKOFF, run these following commands with the proper substitions for application name ``hello_world``
 
 .. code-block:: console
 	
