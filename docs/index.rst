@@ -5,8 +5,8 @@
 
 Welcome to WALKOFF's documentation!
 ===================================
-This documentation is intended to help app and interface developers as well as provide a reference for project contributors.
-Here you’ll find walk-through tutorials and information on WALKOFF interface and workflow development as well as application development.
+This documentation is intended to help app, interface, and workflow developers as well as provide a reference for project contributors.
+Here you’ll find walk-through tutorials as well as other useful information about prepackaged applications that are shipped with Walkoff, our changelog, and how to interact with Walkoff using its RESTful API.
 
 What is WALKOFF?
 ------------------
@@ -16,7 +16,7 @@ WALKOFF is a flexible, easy to use, automation framework allowing users to integ
     * *Easy-to-use:* Drag-and-drop workflow editor. Sharable apps and workflows
     * *Flexbility:* Deployable on Windows or Linux
     * *Modular:* Plug and play integration of almost anything with easy-to-develop applications
-    * *Visual Analytics:* Send workflow data to custom visual interface dashboards
+    * *Visual Analytics:* Send workflow data to custom visual interface dashboards (and soon to be elasticsearch!)
 
 .. _deploying-walkoff-label:
 
@@ -24,7 +24,7 @@ Deploying WALKOFF
 ------------------------
 **Ensure that Python 3.7+, Docker, pip, and git are installed** 
 
-1. Open a terminal on Linux or a command prompt on Windows, and run the command
+1. Open a terminal on Linux or a command prompt on Windows, and run the command in order to clone the Walkoff project to your machine.
 
     .. code-block:: console
 
@@ -67,7 +67,7 @@ Deploying WALKOFF
 
 5. Once navigated to the login page, the default username is "admin" and password is "admin." These can and should be changed upon initial login.
 
-6. To shutdown WALKOFF, run the following two commands
+6. To shutdown WALKOFF, run the following two commands. You may need to wait a few seconds between each command. 
 
     .. code-block:: console
 
