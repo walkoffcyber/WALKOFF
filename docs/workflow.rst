@@ -154,12 +154,14 @@ Trigger
 Condition
 ~~~~~~~~~
 	Actions can depend on Conditions in order to determine which branch of execution it would like to complete. If you would like to go down a right branch based on the output of another action, you would insert a condition from the builtin apps. Once you drag the condition in, write some simple python code such as 
+	
 	.. code-block:: console
 		
 		if previous_node.result.get('value') == 0:
 			selected_node = blue_node
 		elif previous_node.result.get('value') == 1:
 			selected_node = red_node
+			
 	In this case the names of the variables must be separated by spaces. In the workflow 'blue node' and 'red node' have spaces between them, however when writing the conditional, you must separate them using underscores. The one thing you must ensure is that 'selected node' is set to a value in order for the condition node to select a branch it would like to traverse.
 .. image:: ../docs/images/conditional.png
 
