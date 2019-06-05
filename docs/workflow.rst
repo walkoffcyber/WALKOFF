@@ -6,25 +6,26 @@
   
 Workflow Development
 ====================
-Below you can find information about how to create a workflow as well as the tools that are available to you as a user.
+Below, you can find information about how to create a workflow as well as the tools that are available to you as a user.
 
 Workflow Creation
 -----------------
-In this tutorial, we will create our first, basic workflow in order to demonstrate the general features of the workflow editor.
+In this tutorial, we will create a basic workflow in order to demonstrate the general features of the workflow editor.
 
 .. _create-global:
 Create Global
 '''''''''''''
 	Before we create a workflow, we will create a global that our actions will use.
 	
-	In the top navigation bar, click on ``Globals``, then ``Add Global``. Fill out the required fields for this example and set the value to an integer between 1-10. Then click ``Save`` in the dialog box. If nothing is populated in the globals table then verify that you created your encryption key by going to 
+	In the top navigation bar, click on ``Globals``, then ``Add Global``. Fill out the required fields for this example and set the value to an integer between 1-10. Then click ``Save`` in the dialog box. If nothing is populated in the globals table, then verify that you created your encryption key by going to 
+	
 	:ref:`encryption-label`.
 	
 .. image:: ../docs/images/create_global.png
 
 Create Workflow
 '''''''''''''''
-	In the top navigation bar, click ``Workflows`` to return to the main Workflow page. Then, near the top of the page, click the ``Create New`` button. Here you can enter a name for a new workflow. Once you enter the name and have filled out the other fields (optional) click "Continue"
+	In the top navigation bar, click ``Workflows`` to return to the main Workflow page. Then, near the top of the page, click the ``Create New`` button. Here, you can enter a name for a new workflow. Once you enter the name and have filled out the other fields (optional), click "Continue"
 .. image:: ../docs/images/create_workflow.png
 	
 Add Actions to Workspace
@@ -36,7 +37,7 @@ Add Actions to Workspace
 
 Configure Options
 '''''''''''''''''
-	Some actions will have inputs; some required, some optional. In this case, the pause action requires a parameter, but the hello_world action does not. Set the pause parameter's type to ``global`` from the dop down and select the global that you created in the previous examples. The global that you set is the amount of time that the pause action will pause for.
+	Some actions will have inputs; some required, some optional. In this case, the pause action requires a parameter, but the hello_world action does not. Set the pause parameter's type to ``global`` from the drop down and select the global that you created in the previous examples. The global that you set is the amount of time that the pause action will pause for.
 	
 	Finally, connect the actions together by clicking and dragging from the top of the hello_world action to the top of the pause action.
 .. image:: ../docs/images/configuration.png
@@ -50,7 +51,7 @@ Save and Execute Workflow
 
 Examine Results:
 ''''''''''''''''
-	Now you can either check the results of your workflow under the ``Execution`` tab below your workflow, or you can navigate to the ``Execution`` tab at the top of the screen for a more organized view of your app. If everything was configured properly you can expect to see results identical to what is shown below.
+	Now you can either check the results of your workflow under the ``Execution`` tab below your workflow, or you can navigate to the ``Execution`` tab at the top of the screen for a more organized view of your app. If everything was configured properly, you can expect to see results identical to what is shown below.
 .. image:: ../docs/images/results.PNG
 
 |br|
@@ -60,6 +61,7 @@ Workflow Editor
 In this tutorial, we will explore the different components of the Workflow Editor interface.
 
 .. _toolbar-label:
+
 Toolbar
 ''''''''
 From left to right, the buttons in the toolbar are: 
@@ -120,15 +122,15 @@ Editing Actions
 
 Parameter Passing and Node Types (Buitin)
 -----------------------------------------
-Actions may have arguments, whose properties are defined by the App's API schema. By default, an argument is a static value that you specify. To use the output from an Action as an argument to another Action, select dropdown menu and select Action Output, the box to the right of it will then become a dropdown menu if it wasn't already. Select the action you wish to receive the output from (the action must be directly or indirectly linked to the current action). 
+Actions may have arguments, whose properties are defined by the App's API schema. By default, an argument is a static value that you specify. To use the output from an Action as an argument to another Action, select dropdown menu and select ``Action Output``, the box to the right of it will then become a dropdown menu if it wasn't already. Select the action you wish to receive the output from (the action must be directly or indirectly linked to the current action). 
 
 Parameter Passing
 '''''''''''''''''
-There are four different types of parameters you can pass to an action, static value, action output, globals, and workflow variables.
+There are four different types of parameters you can pass to an action: static value, action output, globals, and workflow variables.
 
 Static Value
 ~~~~~~~~~~~~
-	 Static Value parameters are those that you explicitly set as you are building your workflow, in this case, hardcode the value you would like to use. 
+	 Static Value parameters are those that you explicitly set as you are building your workflow. In this case, simply supply the value you would like to use. 
 	 
 Action Output
 ~~~~~~~~~~~~~
@@ -162,7 +164,7 @@ Condition
 		elif previous_node.result.get('value') == 1:
 			selected_node = red_node
 			
-	In this case the names of the variables must be separated by spaces. In the workflow 'blue node' and 'red node' have spaces between them, however when writing the conditional, you must separate them using underscores. The one thing you must ensure is that 'selected node' is set to a value in order for the condition node to select a branch it would like to traverse.
+	In this case, the names of the variables must be separated by spaces. In the workflow, 'blue node' and 'red node' have spaces between them, however when writing the conditional, you must separate them using underscores. The one thing you must ensure is that 'selected node' is set to a value in order for the condition node to select a branch it would like to traverse.
 .. image:: ../docs/images/conditional.png
 
 Parallel Action
