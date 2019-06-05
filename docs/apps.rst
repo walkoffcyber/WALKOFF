@@ -64,7 +64,17 @@ Development Instructions
 
                 docker build -f apps/app_name/1.0.0/Dockerfile apps/app_name/1.0.0
 
+Updating Your Application 
+''''''''''''''''''''''''''''
+If your application Docker service is already running and you would like to update your app in WALKOFF, run these following commands with the proper substitions for your ``snake_case`` application name for ``hello_world``
 
+.. code-block:: console
+	
+	app_dir=apps/hello_world/1.0.0
+	app_tag=localhost:5000/walkoff_app_hello_world:1.0.0
+	docker build -f $app_dir/Dockerfile -t $app_tag $app_dir
+	docker push $app_tag
+	docker service rm walkoff_app_hello_world
 
 Naming and String Requirements:
 '''''''''''''''''''''''''''''''''
