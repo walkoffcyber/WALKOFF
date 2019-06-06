@@ -67,6 +67,7 @@ Deploying WALKOFF
 
 5. Once navigated to the login page, the default username is "admin" and password is "admin." These can and should be changed upon initial login.
 
+
 6. To shutdown WALKOFF, run the following two commands. You may need to wait a few seconds between each command. 
 
     .. code-block:: console
