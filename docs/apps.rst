@@ -36,15 +36,15 @@ Development Instructions
     * Place your developed app script into a ``src`` folder within the version folder.
     * Only files under ``src`` will be copied into the application's Docker container.
 
-**3. Create an ``api.yaml`` YAML metadata file to convert methods to actions**
-    * For WALKOFF to recognize a function as an action, it must have an entry in the apps's ``api.yaml`` file
+**3. Create an** ``api.yaml`` **metadata file to describe your app and its actions**
+    * For WALKOFF to recognize a function as an action, it must have a corresponding entry in the apps's ``api.yaml`` file
     * Place this file at the same level as the ``src`` directory
     * Note:
-        * The top-level name of the action in this file must match exactly the "run" field of the action in the source file
-        * You must include ``name``, ``app_version``, and ``actions`` in this file.
+        * The action names in this file must exactly match your function names in code.
+        * You must include at least ``name``, ``app_version``, and ``actions`` in this file.
 
 **4. Include a ``requirements.txt``**
-    * This file should include any python dependencies your app contains
+    * This file should include any Python package dependencies your app contains
     * Place this file at the same level as the ``src`` directory
     * The Dockerfile will use this to pip install dependencies
 
@@ -57,19 +57,19 @@ Development Instructions
 **6. Create a ``Dockerfile``**
     * This will control how your app will be built.
     * See ``hello_world’s Dockerfile`` for a detailed, step-by-step example on how to create your own ``Dockerfile``
-    * If your application's python dependencies require any OS libraries to build or if your application required any OS packages to run, include them in this file.
+    * If your application's Python dependencies require any OS libraries to build, or if your application requires any OS packages to run, include them in this file.
     * You can test building your app with the Dockerfile before running it in WALKOFF:
 
         .. code-block:: console
 
                 docker build -f apps/app_name/1.0.0/Dockerfile apps/app_name/1.0.0
 
-Updating Your Application 
+Updating Your Application
 ''''''''''''''''''''''''''''
 If your application Docker service is already running and you would like to update your app in WALKOFF, run these following commands with the proper substitions for application name ``hello_world``
 
 .. code-block:: console
-	
+
 	app_dir=apps/hello_world/1.0.0
 	app_tag=localhost:5000/walkoff_app_hello_world:1.0.0
 	docker build -f $app_dir/Dockerfile -t $app_tag $app_dir
@@ -93,17 +93,17 @@ Troubleshooting
 There are several key places to look to debug an application:
 
 1.  **Umpire**
-    |br| Following the umpire’s logs (docker service logs -f walkoff_umpire) can give you an indication of whether build issues are happening within the stack. Building an app for the very first time can take a long time.
+    |br| Following the umpire’s logs (``docker service logs -f walkoff_umpire``) can give you an indication of whether build issues are happening within the stack. Building an app for the very first time can take a long time for example if it contains C dependencies that need to be compiled.
 
 2.  **Docker Services**
-    |br| Watching docker services (watch -n 0.5 docker service ls) can give you an indication of whether your app is running or crashing. At idle with no work, apps and workers will scale to 0/N replicas. If you see something repeatedly scaling up and going to 0, it may be crashing.
+    |br| Watching docker services (``watch -n 0.5 docker service ls``) can give you an indication of whether your app is running or crashing. At idle with no work, apps and workers will scale to 0/N replicas. If you see something repeatedly scaling up and back down to 0, it may be crashing.
 
 3.  **Worker Service Logs**
-    |br| Checking the worker service log after the service becomes available for the first time (docker service logs -f worker) will allow you to view the worker logs. Generally apps will not cause problems here, but there may be edge cases missing in scheduling apps.
+    |br| Checking the worker service log after the service becomes available for the first time (``docker service logs -f worker``) will allow you to view the worker logs. Generally apps will not cause problems here, but there may be edge cases missing in scheduling apps.
 
 4.  **App Service Logs**
-    |br| Checking the app service log after the service becomes available for the first time (docker service logs -f walkoff_app_app_name) will allow you to view the stdout of your app, as well as any exceptions it might be raising.
-	
+    |br| Checking the app service log after the service becomes available for the first time (``docker service logs -f walkoff_app_app_name``) will allow you to view the stdout of your app, as well as any exceptions it might be raising.
+
 5.  **App Containers**
 
     * Obtain app_container_name from docker ps.
@@ -118,14 +118,28 @@ You can also run the app manually outside of docker entirely. Keep in mind while
                 cd app_sdk
                 pip install -e .
 
-    2. Run the rest of WALKOFF via docker-compose as described in the main Readme
+    2. Add debug flags to the umpire's service definition in ``docker-compose.yml``
+
+        .. code-block:: yaml
+
+                umpire:
+                  command: python -m umpire.umpire --log-level=debug --disable-app-autoheal --disable-app-autoscale
+                  image: localhost:5000/umpire:latest
+                  build:
+                   context: ./
+                   dockerfile: umpire/Dockerfile
+                  networks:
+                   - walkoff_default
+                <...>
+
+    3. Run the rest of WALKOFF via docker-compose as described in the main Readme
 
         .. code-block:: console
 
                 cd ..
-                docker-compose up -d --build
+                docker stack deploy --compose-file=docker-compose.yml walkoff
 
-    3. Export environment variables that the app would normally expect inside its container, but change service names to localhost
+    4. Export environment variables that the app would normally expect inside its container, but change service names to localhost
 
         .. code-block:: console
 
@@ -136,7 +150,7 @@ You can also run the app manually outside of docker entirely. Keep in mind while
                 export HOSTNAME=$(hostname)
                 export PYTHONPATH="${PYTHONPATH}:$(pwd)"
 
-    4. Navigate to and run your app.py. The app will exit after a set period if no work is found, so ensure you run your app just before the workflow.
+    5. Navigate to and run your app.py. The app will exit if no work is found, so ensure you run your app just after executing the workflow.
 
         .. code-block:: console
 
