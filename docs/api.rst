@@ -3,6 +3,8 @@
 API Gateway
 ========================
 
+This page is auto-generated documentation of Walkoff's REST API. An alternate view is also available at /api/docs when you run Walkoff.
+
 apps
 ----------------------------------------------
 .. openapi:: api.yaml
