@@ -5,26 +5,26 @@
 
 Welcome to WALKOFF's documentation!
 ===================================
-This documentation is intended to help app, interface, and workflow developers as well as provide a reference for project contributors.
-Here you’ll find walk-through tutorials as well as other useful information about prepackaged applications that are shipped with Walkoff, our changelog, and how to interact with Walkoff using its RESTful API.
+This documentation is intended as a reference for app and workflow developers as well as project contributors and operators.
+Here you will find walkthroughs, tutorials and other useful information about applications that are shipped with Walkoff, our changelog, and how to interact with Walkoff using its RESTful API.
 
 What is WALKOFF?
 ------------------
-WALKOFF is a flexible, easy to use, automation framework allowing users to integrate their capabilities and devices to cut through the repetitive, tedious tasks slowing them down
+WALKOFF is a flexible, easy to use, automation framework allowing users to integrate their capabilities and devices to cut through the repetitive, tedious tasks slowing them down,
 
 **WHAT WE OFFER**
-    * *Easy-to-use:* Drag-and-drop workflow editor. Sharable apps and workflows
-    * *Flexbility:* Deployable on Windows or Linux
-    * *Modular:* Plug and play integration of almost anything with easy-to-develop applications
-    * *Visual Analytics:* Send workflow data to custom visual interface dashboards (and soon to be elasticsearch!)
+    * *Easy-to-use:* Drag-and-drop workflow editor. Sharable apps and workflows.
+    * *Flexbility:* Deployable on Windows or Linux.
+    * *Modular:* Plug and play integration of almost anything with easy-to-develop applications.
+    * *Visual Analytics:* Send workflow data to custom dashboards (and soon, Elasticsearch & Kibana!)
 
 .. _deploying-walkoff-label:
 
 Deploying WALKOFF
 ------------------------
-**Ensure that Python 3.7+, Docker, pip, and git are installed** 
+**Ensure that Python 3.7+, Docker, pip, and git are installed**
 
-1. Open a terminal on Linux or a command prompt on Windows, and run the command in order to clone the Walkoff project to your machine.
+1. Open a terminal on Linux or a command prompt on Windows, and clone the Walkoff project.
 
     .. code-block:: console
 
@@ -36,7 +36,6 @@ Deploying WALKOFF
 
             cd WALKOFF
 
-.. _encryption-label:
 
 3. Create an encryption key
 
@@ -68,12 +67,14 @@ Deploying WALKOFF
 5. Once navigated to the login page, the default username is "admin" and password is "admin." These can and should be changed upon initial login.
 
 
-6. To shutdown WALKOFF, run the following two commands. You may need to wait a few seconds between each command. 
+6. To shutdown WALKOFF, run the following two commands. The first command may not remove all services; as the Umpire container exits, it will try to clean up the rest. Run the command again after a few seconds; if it does not fully clean up, you will have to manually remove services.
 
     .. code-block:: console
 
             docker stack rm walkoff
-            docker-compose down
+            # Some seconds later
+            docker stack rm walkoff
+
 
 
 |br|
@@ -81,7 +82,7 @@ Deploying WALKOFF
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-		
+
 		Home <self>
 		Interface Overview <interface.rst>
 		Workflow Development <workflow.rst>

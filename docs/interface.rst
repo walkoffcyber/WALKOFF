@@ -6,25 +6,25 @@ In this tutorial, we will briefly cover each of the components of the WALKOFF UI
 
 Workflows
 ''''''''''
-	Here, you can create or import a WALKOFF workflow. In order to build your own workflow, you can click 'Create New.' If you have a workflow that you exported/developed elsewhere, you can click the 'Import Workflow' button and select the json document you wish you upload.
+	Here, you can create or import a WALKOFF workflow. To build your own workflow, click 'Create New.' You can also import and export workflows from this page from/to your local filesystem.
 
 .. image:: ../docs/images/workflows.png
 
 Dashboard
 ''''''''''
-	This is the home of custom dashboards for WALKOFF. These can be used to provide visualizations, telemetry, etc.
+	This is the home of custom dashboards for WALKOFF. These can be used to provide visualizations, telemetry, etc. using results directly from Workflow results. Currently, only CSV output is supported; results being piped to Elasticsearch are being implemented.
 
 .. image:: ../docs/images/dashboards.png
 
 Execution
 ''''''''''
-	Here, you can find the status of Workflows that have begun execution as well as finding the results from said Workflows. 
+	Here, you can find the status of Workflows that have begun execution as well as finding the results from said Workflows. You can also abort workflows from this page.
 
 .. image:: ../docs/images/execution.png
 
 Globals
 ''''''''
-	This is the home of the globals where you can store variables that can be accessed by any workflow at any time.
+	Global Variables can be used to store information such as credentials, configuration, etc. that can be referenced inside workflows.
 
 .. image:: ../docs/images/globals.png
 
