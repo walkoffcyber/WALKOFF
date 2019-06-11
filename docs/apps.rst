@@ -43,18 +43,18 @@ Development Instructions
         * The action names in this file must exactly match your function names in code.
         * You must include at least ``name``, ``app_version``, and ``actions`` in this file.
 
-**4. Include a ``requirements.txt``**
+**4. Include a** ``requirements.txt``
     * This file should include any Python package dependencies your app contains
     * Place this file at the same level as the ``src`` directory
     * The Dockerfile will use this to pip install dependencies
 
-**5. Create a ``docker-compose`` YAML file**
+**5. Create a** ``docker-compose`` **YAML file**
     * This will control how your app’s Docker container will run.
     * Place this file at the same level as the ``src`` directory
     * At a minimum, utilize the ``hello_world`` application's ``docker-compose.yml`` and simply change the service name to match that of your new application.
         * **Note:** If you want directories on your host to be available in the container, you can add volume mounts here.
 
-**6. Create a ``Dockerfile``**
+**6. Create a** ``Dockerfile``
     * This will control how your app will be built.
     * See ``hello_world’s Dockerfile`` for a detailed, step-by-step example on how to create your own ``Dockerfile``
     * If your application's Python dependencies require any OS libraries to build, or if your application requires any OS packages to run, include them in this file.
