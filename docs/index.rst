@@ -52,6 +52,7 @@ Deploying WALKOFF
             python key_creation.py | docker secret create encryption_key -
 	    
 5.  Perform the following command to launch WALKOFF with stack mode
+
         .. code-block:: console
 
                 docker-compose build
