@@ -84,7 +84,7 @@ CacheConfig:
       type: integer
       minimum: 0
       maximum: 65535
-      default: 6379
+      default: 6479
     unix_socket_path:
       description: Path to Unix socket to use for the cache instead of host-port. (Redis cache only)
       type: string

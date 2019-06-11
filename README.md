@@ -27,7 +27,7 @@ For general documentation for the latest version of WALKOFF, see our [ReadTheDoc
 
 Ensure that you have Docker and Docker Compose installed.
 
-Ensure that ports 6379 (Redis), 5432 (PostgreSQL), 5000 (Docker Registry), and 8080 (WALKOFF UI) are available, 
+Ensure that ports 6479 (Redis), 5432 (PostgreSQL), 5000 (Docker Registry), and 8080 (WALKOFF UI) are available, 
 or configuration will be needed.
 
 ```
