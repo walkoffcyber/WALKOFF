@@ -37,14 +37,7 @@ Deploying WALKOFF
             cd WALKOFF
 
 
-3. Create an encryption key
-
-    .. code-block:: console
-
-            python key_creation.py | docker secret create encryption_key -
-
-
-3.  Perform the following commands to launch WALKOFF in stack mode
+3.  Perform the following command to launch WALKOFF in swarm mode
 
         .. code-block:: console
 
@@ -52,22 +45,29 @@ Deploying WALKOFF
 
         **Note:** If you have multiple NICs you will need to use --advertise-addr to pick an address from which the swarm will be accessible.
 
+4. Create an encryption key
+
+    .. code-block:: console
+
+            python key_creation.py | docker secret create encryption_key -
+	    
+5.  Perform the following command to launch WALKOFF with stack mode
         .. code-block:: console
 
                 docker-compose build
                 docker stack deploy --compose-file docker-compose.yml walkoff
 
-4. Navigate to the default IP and port. The default IP and the port can be changed in the server. Configuration settings will be saved in the ``common/config.py`` file.
+6. Navigate to the default IP and port. The default IP and the port can be changed in the server. Configuration settings will be saved in the ``common/config.py`` file.
 
 
     .. code-block:: console
 
             localhost:8080
 
-5. Once navigated to the login page, the default username is "admin" and password is "admin." These can and should be changed upon initial login.
+7. Once navigated to the login page, the default username is "admin" and password is "admin." These can and should be changed upon initial login.
 
 
-6. To shutdown WALKOFF, run the following two commands. The first command may not remove all services; as the Umpire container exits, it will try to clean up the rest. Run the command again after a few seconds; if it does not fully clean up, you will have to manually remove services.
+8. To shutdown WALKOFF, run the following two commands. The first command may not remove all services; as the Umpire container exits, it will try to clean up the rest. Run the command again after a few seconds; if it does not fully clean up, you will have to manually remove services.
 
     .. code-block:: console
 
