@@ -6,7 +6,7 @@ In this tutorial, we will briefly cover each of the components of the WALKOFF UI
 
 Workflows
 ''''''''''
-	Here, you can create or import a WALKOFF workflow. To build your own workflow, click 'Create New.' You can also import and export workflows from this page from/to your local filesystem.
+	Here, you can create or import a WALKOFF workflow. To build your own workflow, click ``Create New``. You can also import and export workflows from this page from/to your local filesystem.
 
 .. image:: ../docs/images/workflows.png
 
