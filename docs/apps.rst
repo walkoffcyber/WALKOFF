@@ -92,33 +92,41 @@ Troubleshooting
 ----------------
 There are several key places to look to debug an application:
 
-1.  **Umpire**
+#.  **Umpire**
     |br| Following the umpire’s logs (``docker service logs -f walkoff_umpire``) can give you an indication of whether build issues are happening within the stack. Building an app for the very first time can take a long time for example if it contains C dependencies that need to be compiled.
 
-2.  **Docker Services**
+#.  **Docker Services**
     |br| Watching docker services (``watch -n 0.5 docker service ls``) can give you an indication of whether your app is running or crashing. At idle with no work, apps and workers will scale to 0/N replicas. If you see something repeatedly scaling up and back down to 0, it may be crashing.
 
-3.  **Worker Service Logs**
+#.  **Worker Service Logs**
     |br| Checking the worker service log after the service becomes available for the first time (``docker service logs -f worker``) will allow you to view the worker logs. Generally apps will not cause problems here, but there may be edge cases missing in scheduling apps.
 
-4.  **App Service Logs**
+#.  **App Service Logs**
     |br| Checking the app service log after the service becomes available for the first time (``docker service logs -f walkoff_app_app_name``) will allow you to view the stdout of your app, as well as any exceptions it might be raising.
-
-5.  **App Containers**
+    
+#.  **Console Logging** 
+    |br| If you are more familiar with print debugging, you can add information to the console logger by following the code below. This will display the console output in the workflow editor page under the tab ``Console``. 
+    
+     .. code-block:: console	
+	
+	message = "This is to be printed to the console logger"
+	await self.console_logger.info(message)       
+       
+#.  **App Containers**
 
     * Obtain app_container_name from docker ps.
     * You can docker exec -it app_container_name /bin/sh into your app container while it is running to check things like network connectivity, the filesystem, or to run your app manually inside it. (If it is crashing on startup, you will need to fix that first or override its starting command with a sleep instead)
 
 You can also run the app manually outside of docker entirely. Keep in mind while running your app this way, you will have access to your host's filesystem in a way that is not normally accessible to app containers.
 
-    1. Install the WALKOFF App SDK (assuming you're starting from WALKOFF's directory)
+    #. Install the WALKOFF App SDK (assuming you're starting from WALKOFF's directory)
 
         .. code-block:: console
 
                 cd app_sdk
                 pip install -e .
 
-    2. Add debug flags to the umpire's service definition in ``docker-compose.yml``
+    #. Add debug flags to the umpire's service definition in ``docker-compose.yml``
 
         .. code-block:: yaml
 
@@ -132,14 +140,14 @@ You can also run the app manually outside of docker entirely. Keep in mind while
                    - walkoff_default
                 <...>
 
-    3. Run the rest of WALKOFF via docker-compose as described in the main Readme
+    #. Run the rest of WALKOFF via docker-compose as described in the main Readme
 
         .. code-block:: console
 
                 cd ..
                 docker stack deploy --compose-file=docker-compose.yml walkoff
 
-    4. Export environment variables that the app would normally expect inside its container, but change service names to localhost
+    #. Export environment variables that the app would normally expect inside its container, but change service names to localhost
 
         .. code-block:: console
 
@@ -150,7 +158,7 @@ You can also run the app manually outside of docker entirely. Keep in mind while
                 export HOSTNAME=$(hostname)
                 export PYTHONPATH="${PYTHONPATH}:$(pwd)"
 
-    5. Navigate to and run your app.py. The app will exit if no work is found, so ensure you run your app just after executing the workflow.
+    #. Navigate to and run your app.py. The app will exit if no work is found, so ensure you run your app just after executing the workflow.
 
         .. code-block:: console
 
