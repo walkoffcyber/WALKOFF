@@ -22,7 +22,7 @@ WALKOFF is a flexible, easy to use, automation framework allowing users to integ
 
 Deploying WALKOFF
 ------------------------
-**Ensure that Python 3.7+, Docker, pip, and git are installed**
+**Ensure that Docker, pip, and git are installed**
 
 #. Open a terminal on Linux or a command prompt on Windows, and clone the Walkoff project.
 
