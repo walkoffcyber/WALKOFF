@@ -73,7 +73,7 @@
     "jquery-migrate": "~3.0.0",
     "jqueryui": "~1.11.1",
     "jsoneditor": "^5.33.0",
-    "jspdf": "^1.4.1",
+    "jspdf": "^2.3.1",
     "jstree": "~3.3.4",
     "moment": "~2.20.1",
     "ng-pick-datetime": "~4.3.2",
