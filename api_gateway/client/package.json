@@ -82,7 +82,7 @@
     "ng2-select2": "^1.0.0-beta.16",
     "ngx-clipboard": "^12.0.0",
     "ngx-toastr": "^10.0.2",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "plugin-typescript": "~7.0.6",
     "reflect-metadata": "^0.1.12",
     "rxjs": "~6.2.0",
